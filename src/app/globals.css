@@ -3,46 +3,46 @@
 @tailwind utilities;
 
 :root {
-  /* Backgrounds */
-  --bg-primary: #0A0F1C;
-  --bg-secondary: #111827;
-  --bg-tertiary: #1E293B;
+  /* Backgrounds - Light healthcare theme */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8FAFC;
+  --bg-tertiary: #F1F5F9;
 
   /* Text */
-  --text-primary: #F1F5F9;
-  --text-secondary: #94A3B8;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
   --text-tertiary: #64748B;
 
   /* Accents */
-  --accent-teal: #2DD4BF;
-  --accent-coral: #FB7185;
-  --accent-amber: #FBBF24;
-  --accent-red: #EF4444;
+  --accent-medical-red: #DC2626;
+  --accent-medical-red-light: #FEE2E2;
+  --accent-slate: #334155;
+  --accent-success: #16A34A;
 
   /* Spacing */
-  --section-padding-y: 6rem;
+  --section-padding-y: 4rem;
   --section-padding-x: 1.5rem;
-  --content-max-width: 72rem;
+  --content-max-width: 64rem;
 }
 
 @media (min-width: 768px) {
   :root {
-    --section-padding-y: 8rem;
+    --section-padding-y: 5rem;
     --section-padding-x: 2rem;
   }
 }
 
 @layer base {
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
   }
 
   h1, h2, h3, h4 {
-    @apply font-serif;
+    @apply font-serif text-foreground;
   }
 
   ::selection {
-    background: rgba(45, 212, 191, 0.3);
+    background: rgba(220, 38, 38, 0.15);
   }
 }
 
@@ -53,14 +53,15 @@
     padding: var(--section-padding-y) var(--section-padding-x);
   }
 
-  .gradient-text {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, var(--accent-teal), var(--accent-coral));
+  .card {
+    @apply rounded-lg border-2 bg-white p-6;
   }
 
-  .glass-card {
-    @apply rounded-xl border border-white/5;
-    background: rgba(30, 41, 59, 0.5);
-    backdrop-filter: blur(12px);
+  .card-elevated {
+    @apply rounded-lg border border-slate-200 bg-white p-6 shadow-sm;
+  }
+
+  .risk-highlight {
+    @apply bg-red-50 border-2 border-red-600;
   }
 }

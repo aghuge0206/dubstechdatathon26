@@ -17,10 +17,10 @@ module.exports = {
           tertiary: "var(--text-tertiary)",
         },
         accent: {
-          teal: "var(--accent-teal)",
-          coral: "var(--accent-coral)",
-          amber: "var(--accent-amber)",
-          red: "var(--accent-red)",
+          red: "var(--accent-medical-red)",
+          "red-light": "var(--accent-medical-red-light)",
+          slate: "var(--accent-slate)",
+          success: "var(--accent-success)",
         },
       },
       fontFamily: {
