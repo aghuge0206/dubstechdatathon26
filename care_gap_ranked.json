@@ -1,0 +1,534 @@
+[
+  {
+    "subgroup":"Bisexual",
+    "medical_unmet_pct":20.1,
+    "mental_unmet_pct":28.5,
+    "risk_score":2.5441176471,
+    "rank":1
+  },
+  {
+    "subgroup":"Uninsured",
+    "medical_unmet_pct":25.0,
+    "mental_unmet_pct":13.6,
+    "risk_score":2.4678571429,
+    "rank":2
+  },
+  {
+    "subgroup":"Black and White",
+    "medical_unmet_pct":13.6,
+    "mental_unmet_pct":10.5,
+    "risk_score":1.5830692933,
+    "rank":3
+  },
+  {
+    "subgroup":"With disability",
+    "medical_unmet_pct":12.8,
+    "mental_unmet_pct":11.2,
+    "risk_score":1.3654394545,
+    "rank":4
+  },
+  {
+    "subgroup":"Living with a partner",
+    "medical_unmet_pct":10.7,
+    "mental_unmet_pct":11.2,
+    "risk_score":1.15015498,
+    "rank":5
+  },
+  {
+    "subgroup":"<100% FPL",
+    "medical_unmet_pct":11.1,
+    "mental_unmet_pct":7.0,
+    "risk_score":1.0702403912,
+    "rank":6
+  },
+  {
+    "subgroup":"18-34 years",
+    "medical_unmet_pct":8.8,
+    "mental_unmet_pct":10.0,
+    "risk_score":1.0397609864,
+    "rank":7
+  },
+  {
+    "subgroup":"100% to <200% FPL",
+    "medical_unmet_pct":10.7,
+    "mental_unmet_pct":6.8,
+    "risk_score":1.0257990081,
+    "rank":8
+  },
+  {
+    "subgroup":"Gay or Lesbian",
+    "medical_unmet_pct":7.8,
+    "mental_unmet_pct":12.7,
+    "risk_score":1.0204022593,
+    "rank":9
+  },
+  {
+    "subgroup":"With functioning difficulties",
+    "medical_unmet_pct":9.9,
+    "mental_unmet_pct":8.0,
+    "risk_score":1.0104525417,
+    "rank":10
+  },
+  {
+    "subgroup":"18-44 years",
+    "medical_unmet_pct":9.1,
+    "mental_unmet_pct":9.3,
+    "risk_score":0.9986775038,
+    "rank":11
+  },
+  {
+    "subgroup":"Divorced or separated",
+    "medical_unmet_pct":9.7,
+    "mental_unmet_pct":6.8,
+    "risk_score":0.9591920375,
+    "rank":12
+  },
+  {
+    "subgroup":"35-49 years",
+    "medical_unmet_pct":9.7,
+    "mental_unmet_pct":7.5,
+    "risk_score":0.9350117096,
+    "rank":13
+  },
+  {
+    "subgroup":"American Indian and Alaska Native only",
+    "medical_unmet_pct":10.4,
+    "mental_unmet_pct":7.9,
+    "risk_score":0.9336272214,
+    "rank":14
+  },
+  {
+    "subgroup":"American Indian and Alaska Native and White",
+    "medical_unmet_pct":11.4,
+    "mental_unmet_pct":8.7,
+    "risk_score":0.9181498829,
+    "rank":15
+  },
+  {
+    "subgroup":"Employed - Part-time",
+    "medical_unmet_pct":9.0,
+    "mental_unmet_pct":8.5,
+    "risk_score":0.912625706,
+    "rank":16
+  },
+  {
+    "subgroup":"Female",
+    "medical_unmet_pct":8.2,
+    "mental_unmet_pct":8.1,
+    "risk_score":0.8729232677,
+    "rank":17
+  },
+  {
+    "subgroup":"Some college",
+    "medical_unmet_pct":9.1,
+    "mental_unmet_pct":6.5,
+    "risk_score":0.8699889792,
+    "rank":18
+  },
+  {
+    "subgroup":"Never married",
+    "medical_unmet_pct":8.2,
+    "mental_unmet_pct":7.8,
+    "risk_score":0.8663073426,
+    "rank":19
+  },
+  {
+    "subgroup":"Black only",
+    "medical_unmet_pct":8.3,
+    "mental_unmet_pct":5.7,
+    "risk_score":0.8446893512,
+    "rank":20
+  },
+  {
+    "subgroup":"South",
+    "medical_unmet_pct":8.9,
+    "mental_unmet_pct":5.9,
+    "risk_score":0.8401570464,
+    "rank":21
+  },
+  {
+    "subgroup":"Black only, non-Hispanic",
+    "medical_unmet_pct":8.2,
+    "mental_unmet_pct":5.7,
+    "risk_score":0.8322909492,
+    "rank":22
+  },
+  {
+    "subgroup":"All races, Hispanic",
+    "medical_unmet_pct":9.4,
+    "mental_unmet_pct":6.0,
+    "risk_score":0.8319499931,
+    "rank":23
+  },
+  {
+    "subgroup":"Employed",
+    "medical_unmet_pct":8.2,
+    "mental_unmet_pct":7.0,
+    "risk_score":0.8213424714,
+    "rank":24
+  },
+  {
+    "subgroup":"Small MSA",
+    "medical_unmet_pct":8.4,
+    "mental_unmet_pct":6.4,
+    "risk_score":0.812415622,
+    "rank":25
+  },
+  {
+    "subgroup":"All races, Hispanic, Mexican",
+    "medical_unmet_pct":9.1,
+    "mental_unmet_pct":5.1,
+    "risk_score":0.8117922579,
+    "rank":26
+  },
+  {
+    "subgroup":"Other government coverage - Health insurance coverage: Younger than 65 years",
+    "medical_unmet_pct":7.3,
+    "mental_unmet_pct":5.7,
+    "risk_score":0.8067709051,
+    "rank":27
+  },
+  {
+    "subgroup":"No high school diploma or GED",
+    "medical_unmet_pct":10.4,
+    "mental_unmet_pct":3.4,
+    "risk_score":0.8056998209,
+    "rank":28
+  },
+  {
+    "subgroup":"High social vulnerability",
+    "medical_unmet_pct":7.9,
+    "mental_unmet_pct":6.2,
+    "risk_score":0.8006578041,
+    "rank":29
+  },
+  {
+    "subgroup":"Employed - Full-time",
+    "medical_unmet_pct":7.9,
+    "mental_unmet_pct":6.6,
+    "risk_score":0.7944517151,
+    "rank":30
+  },
+  {
+    "subgroup":"Medium and small metro",
+    "medical_unmet_pct":8.3,
+    "mental_unmet_pct":6.1,
+    "risk_score":0.7893029343,
+    "rank":31
+  },
+  {
+    "subgroup":"45-64 years",
+    "medical_unmet_pct":8.7,
+    "mental_unmet_pct":4.5,
+    "risk_score":0.7653602425,
+    "rank":32
+  },
+  {
+    "subgroup":"Medium social vulnerability",
+    "medical_unmet_pct":8.0,
+    "mental_unmet_pct":5.8,
+    "risk_score":0.7536885246,
+    "rank":33
+  },
+  {
+    "subgroup":"Non-veteran",
+    "medical_unmet_pct":7.6,
+    "mental_unmet_pct":6.2,
+    "risk_score":0.7470691555,
+    "rank":34
+  },
+  {
+    "subgroup":"Medicaid or other state programs",
+    "medical_unmet_pct":6.6,
+    "mental_unmet_pct":6.3,
+    "risk_score":0.737312302,
+    "rank":35
+  },
+  {
+    "subgroup":"U.S.-born",
+    "medical_unmet_pct":7.2,
+    "mental_unmet_pct":6.4,
+    "risk_score":0.7333069293,
+    "rank":36
+  },
+  {
+    "subgroup":"Private - Health insurance coverage: Younger than 65 years",
+    "medical_unmet_pct":6.8,
+    "mental_unmet_pct":6.6,
+    "risk_score":0.7236430638,
+    "rank":37
+  },
+  {
+    "subgroup":"Nonmetropolitan",
+    "medical_unmet_pct":7.4,
+    "mental_unmet_pct":5.3,
+    "risk_score":0.7229163797,
+    "rank":38
+  },
+  {
+    "subgroup":"18 years and older",
+    "medical_unmet_pct":7.4,
+    "mental_unmet_pct":5.9,
+    "risk_score":0.7156564265,
+    "rank":39
+  },
+  {
+    "subgroup":"Large central metro",
+    "medical_unmet_pct":7.2,
+    "mental_unmet_pct":6.4,
+    "risk_score":0.7128151261,
+    "rank":40
+  },
+  {
+    "subgroup":"50-64 years",
+    "medical_unmet_pct":8.3,
+    "mental_unmet_pct":3.9,
+    "risk_score":0.7107315057,
+    "rank":41
+  },
+  {
+    "subgroup":"High school diploma or GED",
+    "medical_unmet_pct":7.9,
+    "mental_unmet_pct":4.8,
+    "risk_score":0.7096741975,
+    "rank":42
+  },
+  {
+    "subgroup":"White only",
+    "medical_unmet_pct":7.1,
+    "mental_unmet_pct":6.1,
+    "risk_score":0.6978991597,
+    "rank":43
+  },
+  {
+    "subgroup":"West",
+    "medical_unmet_pct":6.9,
+    "mental_unmet_pct":6.5,
+    "risk_score":0.6955847913,
+    "rank":44
+  },
+  {
+    "subgroup":"Non-MSA",
+    "medical_unmet_pct":7.0,
+    "mental_unmet_pct":5.0,
+    "risk_score":0.68719865,
+    "rank":45
+  },
+  {
+    "subgroup":"All races, non-Hispanic",
+    "medical_unmet_pct":6.9,
+    "mental_unmet_pct":5.8,
+    "risk_score":0.6869782339,
+    "rank":46
+  },
+  {
+    "subgroup":"White only, non-Hispanic",
+    "medical_unmet_pct":6.9,
+    "mental_unmet_pct":6.1,
+    "risk_score":0.6853974377,
+    "rank":47
+  },
+  {
+    "subgroup":"Midwest",
+    "medical_unmet_pct":6.9,
+    "mental_unmet_pct":5.8,
+    "risk_score":0.6746831519,
+    "rank":48
+  },
+  {
+    "subgroup":"Large MSA",
+    "medical_unmet_pct":6.9,
+    "mental_unmet_pct":5.8,
+    "risk_score":0.66238807,
+    "rank":49
+  },
+  {
+    "subgroup":"Low social vulnerability",
+    "medical_unmet_pct":6.6,
+    "mental_unmet_pct":5.9,
+    "risk_score":0.6492560959,
+    "rank":50
+  },
+  {
+    "subgroup":"Without disability",
+    "medical_unmet_pct":6.8,
+    "mental_unmet_pct":5.3,
+    "risk_score":0.6362308858,
+    "rank":51
+  },
+  {
+    "subgroup":"Foreign-born",
+    "medical_unmet_pct":8.2,
+    "mental_unmet_pct":3.9,
+    "risk_score":0.6286609726,
+    "rank":52
+  },
+  {
+    "subgroup":"Straight",
+    "medical_unmet_pct":6.8,
+    "mental_unmet_pct":4.9,
+    "risk_score":0.6260435322,
+    "rank":53
+  },
+  {
+    "subgroup":"Large fringe metro",
+    "medical_unmet_pct":6.6,
+    "mental_unmet_pct":5.3,
+    "risk_score":0.6196308031,
+    "rank":54
+  },
+  {
+    "subgroup":"\u2265200% FPL",
+    "medical_unmet_pct":6.1,
+    "mental_unmet_pct":5.5,
+    "risk_score":0.593470175,
+    "rank":55
+  },
+  {
+    "subgroup":"Married",
+    "medical_unmet_pct":6.4,
+    "mental_unmet_pct":4.4,
+    "risk_score":0.574986224,
+    "rank":56
+  },
+  {
+    "subgroup":"Other races, non-Hispanic",
+    "medical_unmet_pct":5.9,
+    "mental_unmet_pct":4.5,
+    "risk_score":0.5616476099,
+    "rank":57
+  },
+  {
+    "subgroup":"Not employed - Has worked previously",
+    "medical_unmet_pct":6.2,
+    "mental_unmet_pct":4.1,
+    "risk_score":0.5599669376,
+    "rank":58
+  },
+  {
+    "subgroup":"College degree or higher",
+    "medical_unmet_pct":5.3,
+    "mental_unmet_pct":5.9,
+    "risk_score":0.5577490012,
+    "rank":59
+  },
+  {
+    "subgroup":"Little to no social vulnerability",
+    "medical_unmet_pct":6.2,
+    "mental_unmet_pct":5.3,
+    "risk_score":0.5577421132,
+    "rank":60
+  },
+  {
+    "subgroup":"Not employed",
+    "medical_unmet_pct":6.0,
+    "mental_unmet_pct":3.9,
+    "risk_score":0.5321256371,
+    "rank":61
+  },
+  {
+    "subgroup":"Male",
+    "medical_unmet_pct":6.5,
+    "mental_unmet_pct":3.5,
+    "risk_score":0.5306516049,
+    "rank":62
+  },
+  {
+    "subgroup":"Northeast",
+    "medical_unmet_pct":5.3,
+    "mental_unmet_pct":5.0,
+    "risk_score":0.5051143408,
+    "rank":63
+  },
+  {
+    "subgroup":"Without functioning difficulties",
+    "medical_unmet_pct":5.2,
+    "mental_unmet_pct":4.0,
+    "risk_score":0.4242147679,
+    "rank":64
+  },
+  {
+    "subgroup":"Widowed",
+    "medical_unmet_pct":3.7,
+    "mental_unmet_pct":2.1,
+    "risk_score":0.3220209395,
+    "rank":65
+  },
+  {
+    "subgroup":"Veteran",
+    "medical_unmet_pct":4.1,
+    "mental_unmet_pct":2.4,
+    "risk_score":0.3085583414,
+    "rank":66
+  },
+  {
+    "subgroup":"Asian only",
+    "medical_unmet_pct":3.7,
+    "mental_unmet_pct":2.5,
+    "risk_score":0.2994214079,
+    "rank":67
+  },
+  {
+    "subgroup":"65-74 years",
+    "medical_unmet_pct":2.9,
+    "mental_unmet_pct":1.3,
+    "risk_score":0.2475409836,
+    "rank":68
+  },
+  {
+    "subgroup":"Medicare only excluding Medicare Advantage",
+    "medical_unmet_pct":2.6,
+    "mental_unmet_pct":0.8,
+    "risk_score":0.1924886348,
+    "rank":69
+  },
+  {
+    "subgroup":"Medicare and Medicaid",
+    "medical_unmet_pct":2.4,
+    "mental_unmet_pct":1.7,
+    "risk_score":0.1834412454,
+    "rank":70
+  },
+  {
+    "subgroup":"Medicare Advantage",
+    "medical_unmet_pct":2.1,
+    "mental_unmet_pct":1.1,
+    "risk_score":0.1780961565,
+    "rank":71
+  },
+  {
+    "subgroup":"Not employed - Has never worked",
+    "medical_unmet_pct":3.8,
+    "mental_unmet_pct":1.8,
+    "risk_score":0.1761640722,
+    "rank":72
+  },
+  {
+    "subgroup":"65 years and older",
+    "medical_unmet_pct":2.2,
+    "mental_unmet_pct":1.0,
+    "risk_score":0.162332966,
+    "rank":73
+  },
+  {
+    "subgroup":"Private - Health insurance coverage: 65 years and older",
+    "medical_unmet_pct":2.2,
+    "mental_unmet_pct":0.7,
+    "risk_score":0.1475203196,
+    "rank":74
+  },
+  {
+    "subgroup":"75 years and older",
+    "medical_unmet_pct":1.4,
+    "mental_unmet_pct":0.5,
+    "risk_score":0.0534853286,
+    "rank":75
+  },
+  {
+    "subgroup":"Other government coverage - Health insurance coverage: 65 years and older",
+    "medical_unmet_pct":1.2,
+    "mental_unmet_pct":0.6,
+    "risk_score":0.0035714286,
+    "rank":76
+  }
+]
