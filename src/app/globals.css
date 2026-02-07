@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Backgrounds */
+  --bg-primary: #0A0F1C;
+  --bg-secondary: #111827;
+  --bg-tertiary: #1E293B;
+
+  /* Text */
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-tertiary: #64748B;
+
+  /* Accents */
+  --accent-teal: #2DD4BF;
+  --accent-coral: #FB7185;
+  --accent-amber: #FBBF24;
+  --accent-red: #EF4444;
+
+  /* Spacing */
+  --section-padding-y: 6rem;
+  --section-padding-x: 1.5rem;
+  --content-max-width: 72rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --section-padding-y: 8rem;
+    --section-padding-x: 2rem;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+
+  ::selection {
+    background: rgba(45, 212, 191, 0.3);
+  }
+}
+
+@layer components {
+  .section-container {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding: var(--section-padding-y) var(--section-padding-x);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, var(--accent-teal), var(--accent-coral));
+  }
+
+  .glass-card {
+    @apply rounded-xl border border-white/5;
+    background: rgba(30, 41, 59, 0.5);
+    backdrop-filter: blur(12px);
+  }
+}
