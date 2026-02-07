@@ -1,36 +1,42 @@
 "use client";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { RankingsTable } from "@/components/ui/RankingsTable";
+
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { ChartWrapper } from "@/components/charts/ChartWrapper";
-import { RankingsBarChart } from "@/components/charts/RankingsBarChart";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { RubricTag } from "@/components/ui/RubricTag";
+import { RankingsTable } from "@/components/ui/RankingsTable";
+import { RiskScoreChart } from "@/components/charts/RiskScoreChart";
 import { SECTION_IDS } from "@/data/constants";
 
 export function RankingsSection({ data }) {
+  // Show top 15 in table, top 10 in chart
+  const topForTable = data.slice(0, 15);
+  const topForChart = data.slice(0, 10);
+
   return (
-    <section id={SECTION_IDS.rankings} className="bg-background-secondary">
+    <section id={SECTION_IDS.rankings} className="bg-white border-b border-slate-200">
       <div className="section-container">
         <AnimatedSection>
+          <div className="flex flex-wrap items-center gap-3 mb-2">
+            <RubricTag label="Entities Ranked" />
+          </div>
           <SectionHeading
-            title={data.heading}
-            description={data.description}
-            rubricLabel={data.rubricLabel}
+            title="Who Has the Worst Access?"
+            description={`All ${data.length} demographic subgroups ranked by Care Gap Risk Score. Higher = worse access.`}
           />
         </AnimatedSection>
 
-        {/* Table */}
-        <div className="mb-12">
-          <RankingsTable data={data.data} />
-        </div>
+        {/* Chart */}
+        <AnimatedSection delay={0.1}>
+          <div className="mt-8 mb-12">
+            <h3 className="font-serif text-lg text-foreground mb-4">Top 10 Highest-Risk Groups</h3>
+            <RiskScoreChart data={topForChart} />
+          </div>
+        </AnimatedSection>
 
-        {/* Bar Chart */}
-        <AnimatedSection>
-          <ChartWrapper title="HEGI Score by Demographic Group" className="glass-card p-6">
-            <RankingsBarChart
-              data={data.data}
-              thresholds={data.severityThresholds}
-            />
-          </ChartWrapper>
+        {/* Table */}
+        <AnimatedSection delay={0.2}>
+          <h3 className="font-serif text-lg text-foreground mb-4">Full Rankings (Top 15)</h3>
+          <RankingsTable data={topForTable} />
         </AnimatedSection>
       </div>
     </section>

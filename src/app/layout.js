@@ -21,9 +21,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Health Equity Gap Index | Dub Tech Datathon 2026",
+  title: "Care Gap Risk Score | Team 25 | DubsTech Datathon 2026",
   description:
-    "Analyzing the NHIS Access to Care Dataset (2019-2024) to uncover health equity disparities across demographic groups.",
+    "Who's getting blocked from healthcare? We ranked 76 demographic subgroups by care access barriers using NHIS data.",
 };
 
 export default function RootLayout({ children }) {

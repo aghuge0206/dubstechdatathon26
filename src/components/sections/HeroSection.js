@@ -1,63 +1,62 @@
 "use client";
-import { motion } from "framer-motion";
-import { HeroStat } from "@/components/ui/HeroStat";
-import { ScrollCue } from "@/components/ui/ScrollCue";
-import { SECTION_IDS } from "@/data/constants";
 
-export function HeroSection({ data }) {
+import { motion } from "framer-motion";
+import { DataStatus } from "@/components/ui/DataStatus";
+import { KeyFindingCard } from "@/components/ui/KeyFindingCard";
+import { RubricTag } from "@/components/ui/RubricTag";
+import { SECTION_IDS, TEAM } from "@/data/constants";
+
+export function HeroSection({ data, isPlaceholder }) {
+  const topGroup = data[0];
+
   return (
     <section
       id={SECTION_IDS.hero}
-      className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden"
+      className="bg-background-secondary border-b border-slate-200"
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background-secondary to-background" />
-
-      {/* Subtle grid pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
-
-      <div className="relative z-10 text-center max-w-4xl mx-auto">
+      <div className="section-container">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl text-foreground mb-4">
-            {data.title}
-          </h1>
-        </motion.div>
-
-        <motion.p
-          className="text-foreground-secondary text-lg md:text-xl max-w-2xl mx-auto mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.5 }}
+          className="mb-8"
         >
-          {data.subtitle}
-        </motion.p>
+          <div className="flex items-center gap-3 mb-4">
+            <span className="text-sm font-mono text-foreground-tertiary uppercase tracking-wider">
+              {TEAM.track}
+            </span>
+            <span className="text-foreground-tertiary">•</span>
+            <span className="text-sm font-mono text-foreground-tertiary">
+              Team 25
+            </span>
+          </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-        >
-          <HeroStat
-            value={data.stat.value}
-            label={data.stat.label}
-            prefix={data.stat.prefix}
-            suffix={data.stat.suffix}
-          />
+          <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-4 max-w-3xl">
+            Who's getting blocked from healthcare?
+          </h1>
+
+          <p className="text-lg text-foreground-secondary max-w-2xl mb-6">
+            We ranked <strong className="text-foreground">{data.length} demographic subgroups</strong> by
+            how severely they're blocked from accessing care.
+            One score. One clear answer.
+          </p>
+
+          <div className="flex flex-wrap items-center gap-3">
+            <DataStatus isPlaceholder={isPlaceholder} />
+            <RubricTag label="Metric Created" />
+            <RubricTag label="Entities Ranked" />
+          </div>
         </motion.div>
-      </div>
 
-      <div className="absolute bottom-12 z-10">
-        <ScrollCue text={data.scrollCueText} />
+        {/* Key Finding */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <KeyFindingCard topGroup={topGroup} />
+        </motion.div>
       </div>
     </section>
   );

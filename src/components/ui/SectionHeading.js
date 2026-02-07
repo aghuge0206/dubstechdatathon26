@@ -1,14 +1,16 @@
-import { RubricTag } from "./RubricTag";
+"use client";
 
-export function SectionHeading({ title, description, rubricLabel }) {
+/**
+ * Section heading with optional description.
+ */
+export function SectionHeading({ title, description }) {
   return (
-    <div className="mb-12 max-w-2xl">
-      {rubricLabel && <RubricTag label={rubricLabel} className="mb-4" />}
-      <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">
+    <div className="max-w-2xl">
+      <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-3">
         {title}
       </h2>
       {description && (
-        <p className="text-foreground-secondary text-lg leading-relaxed">
+        <p className="text-foreground-secondary">
           {description}
         </p>
       )}
