@@ -4,7 +4,6 @@ import { MetricFormula } from "@/components/ui/MetricFormula";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { ChartWrapper } from "@/components/charts/ChartWrapper";
 import { MetricDistributionChart } from "@/components/charts/MetricDistributionChart";
-import { RubricTag } from "@/components/ui/RubricTag";
 import { SECTION_IDS } from "@/data/constants";
 
 export function MetricSection({ data }) {
@@ -15,11 +14,7 @@ export function MetricSection({ data }) {
           <SectionHeading
             title={data.heading}
             description={data.description}
-            rubricLabel={data.rubricLabel}
           />
-          {data.rubricLabel2 && (
-            <RubricTag label={data.rubricLabel2} className="mt-2" />
-          )}
         </AnimatedSection>
 
         {/* Formula */}
@@ -29,22 +24,22 @@ export function MetricSection({ data }) {
 
         {/* Interpretation Scale */}
         <AnimatedSection>
-          <div className="glass-card p-6 mb-12">
-            <h3 className="font-serif text-xl text-foreground mb-2">
+          <div className="card-secondary p-8 mb-12">
+            <h3 className="font-serif text-xl text-foreground mb-3">
               {data.interpretation.title}
             </h3>
-            <p className="text-foreground-tertiary text-sm mb-4">
+            <p className="text-slate-500 text-sm mb-6 leading-relaxed">
               {data.interpretation.description}
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-6">
               {data.interpretation.scale.map((level) => (
-                <div key={level.label} className="flex items-center gap-2">
+                <div key={level.label} className="flex items-center gap-3">
                   <div
-                    className="w-4 h-4 rounded"
+                    className="w-5 h-5 rounded shadow-sm border border-black/5"
                     style={{ backgroundColor: level.color }}
                   />
-                  <span className="text-sm text-foreground-secondary">
-                    0-{level.max}: {level.label}
+                  <span className="text-sm font-medium text-slate-600">
+                    0-{level.max}: <span className="text-foreground">{level.label}</span>
                   </span>
                 </div>
               ))}
@@ -54,7 +49,7 @@ export function MetricSection({ data }) {
 
         {/* Distribution Chart */}
         <AnimatedSection>
-          <ChartWrapper title={data.distribution.title} className="glass-card p-6">
+          <ChartWrapper title={data.distribution.title} className="card-secondary p-8">
             <MetricDistributionChart
               data={data.distribution.data}
               thresholds={data.interpretation.scale}

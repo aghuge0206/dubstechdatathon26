@@ -6,16 +6,16 @@ import { SECTION_IDS } from "@/data/constants";
 
 const INSIGHTS = [
   {
-    title: "Sexual orientation is the strongest predictor of compounding barriers",
-    body: "Bisexual adults rank #1 with a composite score of 2.54, showing severe gaps across all three dimensions: 28.5% unmet mental health, 20.1% unmet medical, and 19.7% unmet medication needs. Unlike most high-risk groups that spike on a single metric, this subgroup faces barriers across the board.",
+    title: "Sexual orientation and insurance status drive more risk than age, race, or gender",
+    body: "The two highest-scoring subgroups are defined by sexual orientation (Bisexual, 2.54) and insurance status (Uninsured, 2.47), suggesting that identity and coverage gaps may increase healthcare barriers more severely than factors that typically dominate health equity discussions.",
   },
   {
     title: "Insurance status drives medical and medication gaps disproportionately",
     body: "Uninsured adults rank #2 with a composite score of 2.47, posting the highest unmet medical (25.0%) and medication (25.8%) rates of any subgroup. Their mental health gap (13.6%) is comparatively lower, indicating barriers concentrate in cost-driven care domains.",
   },
   {
-    title: "Disability creates persistent multi-dimensional barriers",
-    body: "Adults with disabilities rank #4 with a composite score of 1.38, showing elevated gaps across medical (12.8%), mental health (11.2%), and medication (13.5%). The consistency across all three dimensions suggests systemic rather than isolated barriers to care.",
+    title: "Medication affordability is the most common national barrier",
+    body: "At 7.8%, medication affordability is the highest national average of the three indicators, exceeding both unmet medical care (7.4%) and unmet mental health care (5.9%). This makes prescription costs the single most widespread barrier to care across all demographics.",
   },
 ];
 

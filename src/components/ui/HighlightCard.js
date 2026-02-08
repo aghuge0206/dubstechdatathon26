@@ -2,24 +2,23 @@
 import { AnimatedSection } from "./AnimatedSection";
 
 const colorMap = {
-  teal: { border: "border-accent-teal/30", text: "text-accent-teal", bg: "bg-accent-teal/10" },
-  coral: { border: "border-accent-coral/30", text: "text-accent-coral", bg: "bg-accent-coral/10" },
-  amber: { border: "border-accent-amber/30", text: "text-accent-amber", bg: "bg-accent-amber/10" },
+  red: { border: "border-red-100", text: "text-red-600", bg: "bg-red-50/50" },
+  slate: { border: "border-slate-100", text: "text-slate-600", bg: "bg-slate-50/50" },
 };
 
-export function HighlightCard({ title, stat, description, color = "teal", delay = 0 }) {
-  const colors = colorMap[color] || colorMap.teal;
+export function HighlightCard({ title, stat, description, color = "red", delay = 0 }) {
+  const colors = colorMap[color] || colorMap.red;
 
   return (
     <AnimatedSection delay={delay}>
-      <div className={`glass-card p-6 border ${colors.border}`}>
-        <div className={`text-sm font-mono uppercase tracking-wider ${colors.text} mb-3`}>
+      <div className={`card-secondary p-8 border-l-4 ${colors.border} ${colors.bg}`}>
+        <div className={`text-xs font-mono uppercase tracking-[0.2em] ${colors.text} mb-3 font-bold`}>
           {title}
         </div>
-        <div className={`text-4xl md:text-5xl font-serif ${colors.text} mb-3`}>
+        <div className={`text-5xl font-serif ${colors.text} mb-4`}>
           {stat}
         </div>
-        <p className="text-foreground-secondary text-sm leading-relaxed">
+        <p className="text-slate-600 text-sm leading-relaxed font-medium italic">
           {description}
         </p>
       </div>

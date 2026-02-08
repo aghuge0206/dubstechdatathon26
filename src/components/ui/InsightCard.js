@@ -22,12 +22,12 @@ const icons = {
 export function InsightCard({ title, description, icon, delay = 0 }) {
   return (
     <AnimatedSection delay={delay}>
-      <div className="glass-card p-6 h-full">
-        <div className="text-accent-teal mb-4">
+      <div className="card-secondary p-7 h-full flex flex-col">
+        <div className="text-red-600 mb-5">
           {icons[icon] || icons.shield}
         </div>
         <h3 className="font-serif text-xl text-foreground mb-3">{title}</h3>
-        <p className="text-foreground-secondary text-sm leading-relaxed">
+        <p className="text-slate-600 text-sm leading-relaxed flex-grow">
           {description}
         </p>
       </div>

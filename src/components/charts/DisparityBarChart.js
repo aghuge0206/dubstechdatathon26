@@ -45,7 +45,13 @@ export function DisparityBarChart({ data }) {
           <XAxis type="number" tick={{ fill: chartTheme.axisColor, fontSize: 12 }} domain={[0, "auto"]} unit="%" />
           <YAxis type="category" dataKey="group" tick={{ fill: chartTheme.axisColor, fontSize: 12 }} width={75} />
           <Tooltip content={<CustomTooltip />} cursor={{ fill: "rgba(255,255,255,0.05)" }} />
-          <Bar dataKey="estimate" fill={chartTheme.colors.coral} radius={[0, 4, 4, 0]} barSize={20}>
+          <Bar 
+            dataKey="estimate" 
+            fill={chartTheme.colors.coral} 
+            radius={[0, 4, 4, 0]} 
+            barSize={20}
+            isAnimationActive={false}
+          >
             <ErrorBar dataKey="errorY" width={4} stroke={chartTheme.colors.slate} strokeWidth={1.5} />
           </Bar>
         </BarChart>

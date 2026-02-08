@@ -9,6 +9,8 @@ import { IndicatorBreakdownChart } from "@/components/charts/IndicatorBreakdownC
 import { IndicatorImportanceChart } from "@/components/charts/IndicatorImportanceChart";
 import { SECTION_IDS } from "@/data/constants";
 
+import { COLORS } from "@/data/constants";
+
 const FILTERS = [
   { key: "top5", label: "Top 5" },
   { key: "top10", label: "Top 10" },
@@ -54,7 +56,6 @@ export function RankingsSection({ data }) {
         <AnimatedSection>
           <SectionHeading
             title="Who Has the Worst Access?"
-            description={`All ${data.length} demographic subgroups ranked by Care Gap Risk Score. Higher = worse access.`}
           />
         </AnimatedSection>
 
@@ -103,14 +104,22 @@ export function RankingsSection({ data }) {
 
         {/* Table */}
         <AnimatedSection delay={0.3}>
-          <h3 className="font-serif text-lg text-foreground mb-4">Rankings</h3>
+          <h3 className="font-serif text-xl text-foreground mb-2">Explore The Full Rankings</h3>
+          <p className="text-foreground-secondary text-sm mb-6">
+            All {data.length} demographic subgroups ranked by Care Gap Risk Score. Higher = worse access.
+          </p>
+          
           {isNationalAvg && (
-            <p className="text-sm text-foreground-tertiary mb-4">
-              The &ldquo;18 years and older&rdquo; row represents all adults in the NHIS survey — the population-level baseline.
-              Its score sits near the dataset mean, providing a reference point for comparing high-risk and low-risk subgroups.
+            <p 
+              className="text-sm text-black border-l-4 border-indigo-500 p-4 mb-6 italic leading-relaxed shadow-sm"
+              style={{ backgroundColor: COLORS.nationalAvgBg }}
+            >
+              The &ldquo;18 years and older&rdquo; row represents all adults in the NHIS survey, providing a population-level baseline for comparing high-risk and low-risk subgroups.
             </p>
           )}
-          <RankingsTable data={filteredData} highlight={isNationalAvg} />
+          <div className="min-h-[400px]">
+            <RankingsTable data={filteredData} highlight={isNationalAvg} />
+          </div>
         </AnimatedSection>
       </div>
     </section>

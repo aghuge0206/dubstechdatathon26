@@ -7,23 +7,23 @@ import { SECTION_IDS } from "@/data/constants";
 const LIMITATIONS = [
   {
     title: "Self-reported data",
-    body: "NHIS responses reflect participant recall and willingness to disclose, introducing potential recall bias and social desirability effects.",
+    body: "NHIS responses reflect participant recall and willingness to disclose, introducing potential recall and social desirability bias.",
+  },
+  {
+    title: "Individual variations within groups",
+    body: "Subgroup averages mask individual variation. Not every member of a high-risk group experiences the same barriers.",
+  },
+  {
+    title: "Cost barriers only",
+    body: "All three indicators measure cost-related barriers. Non-cost barriers like transportation, language access, wait times, and discrimination are not captured in this dataset.",
   },
   {
     title: "Correlation, not causation",
     body: "High-risk subgroups may share overlapping demographic factors. The composite score identifies associations, not causal mechanisms.",
   },
   {
-    title: "Within-group heterogeneity",
-    body: "Subgroup averages mask individual variation. Not every member of a high-risk group experiences the same barriers.",
-  },
-  {
     title: "Equal weighting assumption",
     body: "The 1:1:1 weighting treats all three barrier dimensions as equally important. Alternative schemes could produce different rankings.",
-  },
-  {
-    title: "Sampling limitations",
-    body: "The NHIS household sampling frame under-represents institutionalized, homeless, and undocumented populations who may face the most severe barriers.",
   },
   {
     title: "Cross-sectional snapshot",

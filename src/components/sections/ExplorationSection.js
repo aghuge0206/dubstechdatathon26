@@ -17,7 +17,6 @@ export function ExplorationSection({ data }) {
           <SectionHeading
             title={data.heading}
             description={data.description}
-            rubricLabel={data.rubricLabel}
           />
         </AnimatedSection>
 
@@ -36,7 +35,7 @@ export function ExplorationSection({ data }) {
 
         {/* Bar Chart */}
         <AnimatedSection>
-          <ChartWrapper title={data.barChart.title} className="glass-card p-6 mb-8">
+          <ChartWrapper title={data.barChart.title} className="card-secondary p-8 mb-8">
             <p className="text-foreground-tertiary text-sm mb-4">{data.barChart.description}</p>
             <DisparityBarChart data={data.barChart.data} />
           </ChartWrapper>
@@ -44,7 +43,7 @@ export function ExplorationSection({ data }) {
 
         {/* Line Chart */}
         <AnimatedSection>
-          <ChartWrapper title={data.lineChart.title} className="glass-card p-6 mb-8">
+          <ChartWrapper title={data.lineChart.title} className="card-secondary p-8 mb-8">
             <p className="text-foreground-tertiary text-sm mb-4">{data.lineChart.description}</p>
             <TrendLineChart series={data.lineChart.series} />
           </ChartWrapper>
@@ -55,7 +54,7 @@ export function ExplorationSection({ data }) {
 
         {/* Heatmap */}
         <AnimatedSection>
-          <ChartWrapper title={data.heatmap.title} className="glass-card p-6">
+          <ChartWrapper title={data.heatmap.title} className="card-secondary p-8">
             <p className="text-foreground-tertiary text-sm mb-4">{data.heatmap.description}</p>
             <DemographicHeatmap
               conditions={data.heatmap.conditions}

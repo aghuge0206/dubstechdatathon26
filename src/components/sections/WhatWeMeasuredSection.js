@@ -11,40 +11,33 @@ const METRICS = [
     id: "medical",
     title: "Unmet Medical Needs",
     field: "medical_unmet_pct",
-    description: "Percentage who needed medical care in the past 12 months but didn't get it.",
-    why: "Measures direct barriers to essential healthcare services when people who need care can't access it.",
+    description: "Percentage who couldn’t afford medical care in the past year.",
+    why: "The most universal healthcare access measure: when people are unable to afford a doctor, preventable conditions go untreated.",
   },
   {
     id: "mental",
     title: "Unmet Mental Health Needs",
     field: "mental_unmet_pct",
-    description: "Percentage who needed mental health care or counseling but didn't receive it.",
-    why: "Mental health access gaps are often invisible but have cascading effects on overall well-being.",
+    description: "Percentage who couldn’t afford mental health care or counseling in the past year.",
+    why: "This metric indicates some of the largest demographic disparities within the data, with certain groups reporting rates nearly 5 times the national average.",
   },
   {
     id: "medication",
     title: "Unmet Medication Needs",
     field: "medication_unmet_pct",
-    description: "Percentage who needed prescription medications but couldn't afford or access them.",
-    why: "Medication access is critical for managing chronic conditions and preventing health crises.",
+    description: "Percentage who did not take medication as prescribed to save money in the past year.",
+    why: "This is the single largest cost barrier nationally, meaning that even people who can reach a provider cannot always follow through with their treatment.",
   },
 ];
 
 export function WhatWeMeasuredSection({ data }) {
-  // Calculate averages across all subgroups
-  const avgMedical = (data.reduce((sum, d) => sum + d.medical_unmet_pct, 0) / data.length).toFixed(1);
-  const avgMental = (data.reduce((sum, d) => sum + d.mental_unmet_pct, 0) / data.length).toFixed(1);
-  const avgMedication = (data.reduce((sum, d) => sum + (d.medication_unmet_pct || 0), 0) / data.length).toFixed(1);
-
-  const averages = [avgMedical, avgMental, avgMedication];
-
   return (
     <section id={SECTION_IDS.measured} className="bg-white border-b border-slate-200">
       <div className="section-container">
         <AnimatedSection>
           <SectionHeading
             title="What We Measured"
-            description="Three indicators from the National Health Interview Survey that capture access barriers."
+            description="The NHIS tracked five cost-related access indicators in 2024. We narrowed them down to these three because they capture a complete failure to receive care, not just a delay or inconvenience. When someone skips medication or goes without medical or mental health treatment due to cost, the consequence is unmet need as opposed to deferred need."
           />
         </AnimatedSection>
 
@@ -53,7 +46,6 @@ export function WhatWeMeasuredSection({ data }) {
             <AnimatedSection key={metric.id} delay={i * 0.1}>
               <MetricCard
                 title={metric.title}
-                value={`${averages[i]}%`}
                 description={metric.description}
                 why={metric.why}
               />

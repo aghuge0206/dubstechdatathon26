@@ -9,6 +9,7 @@ import {
     Tooltip,
     Legend,
 } from "recharts";
+import { COLORS } from "@/data/constants";
 
 /**
  * Stacked horizontal bar chart showing the 3 cost-barrier indicators
@@ -23,9 +24,9 @@ function CustomYTick({ x, y, payload }) {
             y={y}
             textAnchor="end"
             dominantBaseline="middle"
+            fill={isNatAvg ? COLORS.nationalAvg : "#475569"}
             style={{
                 fontSize: 12,
-                fill: isNatAvg ? "#3B82F6" : "#475569",
                 fontWeight: isNatAvg ? 700 : 400,
             }}
         >
@@ -39,17 +40,18 @@ export function IndicatorBreakdownChart({ data }) {
     const chartData = [...data].reverse();
 
     return (
-        <div style={{ height: chartData.length * 45 }}>
+        <div style={{ height: chartData.length * 100 }}>
             <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                     data={chartData}
                     layout="vertical"
                     margin={{ top: 0, right: 30, bottom: 0, left: 0 }}
+                    barGap={4}
                 >
                     <XAxis
                         type="number"
-                        domain={[0, 70]}
-                        ticks={[0, 10, 20, 30, 40, 50, 60, 70]}
+                        domain={[0, 30]}
+                        ticks={[0, 5, 10, 15, 20, 25, 30]}
                         tick={{ fontSize: 12, fill: "#64748B" }}
                         tickLine={false}
                         axisLine={false}
@@ -74,30 +76,32 @@ export function IndicatorBreakdownChart({ data }) {
                     />
                     <Legend
                         verticalAlign="top"
-                        height={36}
-                        wrapperStyle={{ fontSize: 13 }}
+                        height={48}
+                        wrapperStyle={{ fontSize: 13, paddingBottom: "20px" }}
                     />
                     <Bar
                         dataKey="medical_unmet_pct"
                         name="Medical"
-                        stackId="a"
-                        fill="#60A5FA"
-                        barSize={20}
+                        fill="#FBBF24"
+                        barSize={18}
+                        radius={[0, 4, 4, 0]}
+                        isAnimationActive={false}
                     />
                     <Bar
                         dataKey="medication_unmet_pct"
                         name="Medication"
-                        stackId="a"
-                        fill="#FBBF24"
-                        barSize={20}
+                        fill="#F87171"
+                        barSize={18}
+                        radius={[0, 4, 4, 0]}
+                        isAnimationActive={false}
                     />
                     <Bar
                         dataKey="mental_unmet_pct"
                         name="Mental Health"
-                        stackId="a"
-                        fill="#F472B6"
+                        fill="#60A5FA"
+                        barSize={18}
                         radius={[0, 4, 4, 0]}
-                        barSize={20}
+                        isAnimationActive={false}
                     />
                 </BarChart>
             </ResponsiveContainer>

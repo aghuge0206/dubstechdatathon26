@@ -62,7 +62,6 @@ export default function Home() {
         <HowScoreWorksSection />
         <KeyFindingSection data={data} />
         <RankingsSection data={data} />
-        {/* Visualizations — placeholder for teammate's branch */}
         <InsightsSection />
         <WhyItMattersSection />
         <NextStepsSection />
