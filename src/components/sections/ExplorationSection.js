@@ -1,67 +1,55 @@
 "use client";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { StatCard } from "@/components/ui/StatCard";
-import { PullQuote } from "@/components/ui/PullQuote";
+
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { ChartWrapper } from "@/components/charts/ChartWrapper";
-import { DisparityBarChart } from "@/components/charts/DisparityBarChart";
-import { TrendLineChart } from "@/components/charts/TrendLineChart";
-import { DemographicHeatmap } from "@/components/charts/DemographicHeatmap";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { MetricDistributionChart } from "@/components/charts/MetricDistributionChart";
+import { SensitivityTable } from "@/components/ui/SensitivityTable";
 import { SECTION_IDS } from "@/data/constants";
 
 export function ExplorationSection({ data }) {
   return (
-    <section id={SECTION_IDS.exploration} className="bg-background-secondary">
+    <section id="exploration" className="bg-white border-b border-slate-200">
       <div className="section-container">
         <AnimatedSection>
           <SectionHeading
-            title={data.heading}
-            description={data.description}
+            title="Exploring the Data"
+            description="Before building the composite score, we examined how each metric distributes across subgroups and tested whether our conclusions hold under different assumptions."
           />
         </AnimatedSection>
 
-        {/* Stats row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {data.stats.map((stat, i) => (
-            <StatCard
-              key={stat.label}
-              value={stat.value}
-              label={stat.label}
-              suffix={stat.suffix}
-              delay={i * 0.1}
+        {/* Metric Distributions */}
+        <AnimatedSection delay={0.1}>
+          <h3 className="font-serif text-lg text-foreground mb-4 mt-8">
+            How do the three metrics distribute across groups?
+          </h3>
+          <div className="grid md:grid-cols-3 gap-4">
+            <MetricDistributionChart
+              data={data}
+              dataKey="medical_unmet_pct"
+              title="Unmet Medical Needs"
+              color="#F87171"
             />
-          ))}
-        </div>
-
-        {/* Bar Chart */}
-        <AnimatedSection>
-          <ChartWrapper title={data.barChart.title} className="card-secondary p-8 mb-8">
-            <p className="text-foreground-tertiary text-sm mb-4">{data.barChart.description}</p>
-            <DisparityBarChart data={data.barChart.data} />
-          </ChartWrapper>
+            <MetricDistributionChart
+              data={data}
+              dataKey="mental_unmet_pct"
+              title="Unmet Mental Health Needs"
+              color="#A78BFA"
+            />
+            <MetricDistributionChart
+              data={data}
+              dataKey="medication_unmet_pct"
+              title="Unmet Medication Needs"
+              color="#34D399"
+            />
+          </div>
         </AnimatedSection>
 
-        {/* Line Chart */}
-        <AnimatedSection>
-          <ChartWrapper title={data.lineChart.title} className="card-secondary p-8 mb-8">
-            <p className="text-foreground-tertiary text-sm mb-4">{data.lineChart.description}</p>
-            <TrendLineChart series={data.lineChart.series} />
-          </ChartWrapper>
-        </AnimatedSection>
-
-        {/* Pull Quote */}
-        <PullQuote text={data.pullQuote.text} source={data.pullQuote.source} />
-
-        {/* Heatmap */}
-        <AnimatedSection>
-          <ChartWrapper title={data.heatmap.title} className="card-secondary p-8">
-            <p className="text-foreground-tertiary text-sm mb-4">{data.heatmap.description}</p>
-            <DemographicHeatmap
-              conditions={data.heatmap.conditions}
-              demographics={data.heatmap.demographics}
-              values={data.heatmap.values}
-            />
-          </ChartWrapper>
+        {/* Sensitivity Analysis */}
+        <AnimatedSection delay={0.2}>
+          <h3 className="font-serif text-lg text-foreground mb-4 mt-10">
+            Are the rankings sensitive to weighting changes?
+          </h3>
+          <SensitivityTable data={data} />
         </AnimatedSection>
       </div>
     </section>

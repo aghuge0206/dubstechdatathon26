@@ -1,5 +1,6 @@
 "use client";
 import { Fragment } from "react";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 function getHeatColor(value, min, max) {
   const ratio = (value - min) / (max - min || 1);
@@ -9,6 +10,7 @@ function getHeatColor(value, min, max) {
 }
 
 export function DemographicHeatmap({ conditions, demographics, values }) {
+  const isMobile = useIsMobile();
   const allValues = values.flat();
   const min = Math.min(...allValues);
   const max = Math.max(...allValues);
@@ -16,9 +18,9 @@ export function DemographicHeatmap({ conditions, demographics, values }) {
   return (
     <div className="overflow-x-auto">
       <div
-        className="inline-grid gap-1 min-w-[600px]"
+        className="inline-grid gap-1"
         style={{
-          gridTemplateColumns: `140px repeat(${demographics.length}, 1fr)`,
+          gridTemplateColumns: `${isMobile ? 100 : 140}px repeat(${demographics.length}, 1fr)`,
         }}
       >
         {/* Header row */}

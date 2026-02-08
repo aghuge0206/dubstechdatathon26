@@ -1,49 +1,102 @@
 "use client";
-import dynamic from "next/dynamic";
-import { chartTheme, getSeverityColor } from "@/lib/chartTheme";
 
-const BarChart = dynamic(() => import("recharts").then((m) => m.BarChart), { ssr: false });
-const Bar = dynamic(() => import("recharts").then((m) => m.Bar), { ssr: false });
-const XAxis = dynamic(() => import("recharts").then((m) => m.XAxis), { ssr: false });
-const YAxis = dynamic(() => import("recharts").then((m) => m.YAxis), { ssr: false });
-const CartesianGrid = dynamic(() => import("recharts").then((m) => m.CartesianGrid), { ssr: false });
-const Tooltip = dynamic(() => import("recharts").then((m) => m.Tooltip), { ssr: false });
-const ResponsiveContainer = dynamic(() => import("recharts").then((m) => m.ResponsiveContainer), { ssr: false });
-const Cell = dynamic(() => import("recharts").then((m) => m.Cell), { ssr: false });
+import { useMemo } from "react";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+  Cell,
+  Tooltip,
+  ReferenceLine,
+} from "recharts";
 
-const defaultThresholds = [
-  { max: 25, label: "Low", color: "#2DD4BF" },
-  { max: 50, label: "Moderate", color: "#FBBF24" },
-  { max: 75, label: "High", color: "#FB7185" },
-  { max: 100, label: "Critical", color: "#EF4444" },
-];
+/**
+ * Small multiples chart showing distribution of a single metric across all subgroups.
+ * Highlights where top groups and national average fall.
+ */
+export function MetricDistributionChart({ data, dataKey, title, color }) {
+  // Sort by the metric value for distribution view
+  const sortedData = useMemo(() => {
+    return [...data]
+      .filter(d => d[dataKey] != null)
+      .sort((a, b) => b[dataKey] - a[dataKey]);
+  }, [data, dataKey]);
 
-export function MetricDistributionChart({ data, thresholds = defaultThresholds }) {
-  const sorted = [...data].sort((a, b) => b.score - a.score);
+  // Find national average
+  const nationalAvg = data.find(d => d.subgroup === "18 years and older");
+  const avgValue = nationalAvg ? nationalAvg[dataKey] : null;
+
+  // Find top 3 subgroups
+  const top3Subgroups = new Set(sortedData.slice(0, 3).map(d => d.subgroup));
 
   return (
-    <div style={{ width: "100%", height: Math.max(300, sorted.length * 35) }}>
-      <ResponsiveContainer>
-        <BarChart data={sorted} layout="vertical" margin={{ top: 5, right: 30, left: 120, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke={chartTheme.gridColor} horizontal={false} />
-          <XAxis type="number" domain={[0, 100]} tick={{ fill: chartTheme.axisColor, fontSize: 12 }} />
-          <YAxis type="category" dataKey="group" tick={{ fill: chartTheme.axisColor, fontSize: 12 }} width={115} />
-          <Tooltip
-            contentStyle={{
-              background: chartTheme.tooltip.background,
-              border: `1px solid ${chartTheme.tooltip.border}`,
-              borderRadius: 8,
-              color: chartTheme.tooltip.text,
-            }}
-            formatter={(value) => [`${value}`, "HEGI Score"]}
-          />
-          <Bar dataKey="score" radius={[0, 4, 4, 0]} barSize={18}>
-            {sorted.map((entry) => (
-              <Cell key={entry.group} fill={getSeverityColor(entry.score, thresholds)} />
-            ))}
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
+    <div className="bg-white border border-slate-200 rounded-lg p-4">
+      <h4 className="font-serif text-sm text-foreground mb-2">{title}</h4>
+      <div className="h-48">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart
+            data={sortedData}
+            margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
+          >
+            <XAxis
+              dataKey="subgroup"
+              tick={false}
+              axisLine={false}
+              tickLine={false}
+            />
+            <YAxis
+              domain={[0, 'auto']}
+              tick={{ fontSize: 10, fill: "#64748B" }}
+              tickLine={false}
+              axisLine={false}
+              width={30}
+              tickFormatter={(v) => `${v}%`}
+            />
+            <Tooltip
+              content={({ payload, active }) => {
+                if (!active || !payload || !payload.length) return null;
+                const d = payload[0].payload;
+                return (
+                  <div className="bg-slate-800 text-white text-xs px-2 py-1 rounded shadow">
+                    <p className="font-medium">{d.subgroup}</p>
+                    <p>{d[dataKey]}%</p>
+                  </div>
+                );
+              }}
+            />
+            {avgValue && (
+              <ReferenceLine
+                y={avgValue}
+                stroke="#6366F1"
+                strokeDasharray="4 4"
+                strokeWidth={2}
+                label={{
+                  value: `Avg: ${avgValue}%`,
+                  position: "insideTopRight",
+                  fill: "#6366F1",
+                  fontSize: 10,
+                }}
+              />
+            )}
+            <Bar dataKey={dataKey} radius={[2, 2, 0, 0]}>
+              {sortedData.map((entry) => {
+                const isTop3 = top3Subgroups.has(entry.subgroup);
+                return (
+                  <Cell
+                    key={entry.subgroup}
+                    fill={isTop3 ? color : "#E2E8F0"}
+                  />
+                );
+              })}
+            </Bar>
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+      <p className="text-[10px] text-foreground-tertiary mt-2 text-center">
+        76 subgroups ranked high → low. Colored = top 3. Dashed line = national avg.
+      </p>
     </div>
   );
 }

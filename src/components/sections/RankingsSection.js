@@ -38,6 +38,28 @@ function getFilteredData(data, activeFilter) {
 
 export function RankingsSection({ data }) {
   const [activeFilter, setActiveFilter] = useState("top15");
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // Download as CSV
+  const downloadCSV = () => {
+    const headers = ["Rank", "Subgroup", "Medical (%)", "Mental (%)", "Medication (%)", "Risk Score"];
+    const rows = data.map(d => [
+      d.rank,
+      `"${d.subgroup}"`,
+      d.medical_unmet_pct,
+      d.mental_unmet_pct,
+      d.medication_unmet_pct,
+      d.risk_score.toFixed(2)
+    ]);
+    const csv = [headers.join(","), ...rows.map(r => r.join(","))].join("\n");
+    const blob = new Blob([csv], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "care_gap_rankings.csv";
+    a.click();
+    URL.revokeObjectURL(url);
+  };
 
   // Chart data: top 10 + National Avg row (friend's visualization logic)
   const nationalAvg = data.find((d) => d.subgroup === "18 years and older");
@@ -46,8 +68,12 @@ export function RankingsSection({ data }) {
     ...(nationalAvg ? [{ ...nationalAvg, subgroup: "National Avg (18+)", isNationalAvg: true }] : []),
   ];
 
-  // Table data: pill-filtered
-  const filteredData = getFilteredData(data, activeFilter);
+  // Table data: pill-filtered then search-filtered
+  let filteredData = getFilteredData(data, activeFilter);
+  if (searchTerm.trim()) {
+    const term = searchTerm.toLowerCase();
+    filteredData = filteredData.filter(d => d.subgroup.toLowerCase().includes(term));
+  }
   const isNationalAvg = activeFilter === "nationalAvg";
 
   return (
@@ -90,11 +116,10 @@ export function RankingsSection({ data }) {
               <button
                 key={filter.key}
                 onClick={() => setActiveFilter(filter.key)}
-                className={`rounded-full px-4 py-1.5 text-sm font-mono transition-colors ${
-                  activeFilter === filter.key
-                    ? "bg-slate-800 text-white"
-                    : "bg-slate-100 text-foreground-secondary hover:bg-slate-200"
-                }`}
+                className={`rounded-full px-4 py-2.5 text-sm font-mono transition-colors ${activeFilter === filter.key
+                  ? "bg-slate-800 text-white"
+                  : "bg-slate-100 text-foreground-secondary hover:bg-slate-200"
+                  }`}
               >
                 {filter.label}
               </button>
@@ -105,12 +130,32 @@ export function RankingsSection({ data }) {
         {/* Table */}
         <AnimatedSection delay={0.3}>
           <h3 className="font-serif text-xl text-foreground mb-2">Explore The Full Rankings</h3>
-          <p className="text-foreground-secondary text-sm mb-6">
+          <p className="text-foreground-secondary text-sm mb-4">
             All {data.length} demographic subgroups ranked by Care Gap Risk Score. Higher = worse access.
           </p>
-          
+
+          {/* Search and Download */}
+          <div className="flex flex-wrap items-center gap-4 mb-6">
+            <input
+              type="text"
+              placeholder="Search subgroups..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="flex-1 max-w-sm px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
+            />
+            <button
+              onClick={downloadCSV}
+              className="px-4 py-2.5 bg-slate-800 text-white text-sm rounded-lg hover:bg-slate-700 transition-colors flex items-center gap-2"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Download Cleaned CSV
+            </button>
+          </div>
+
           {isNationalAvg && (
-            <p 
+            <p
               className="text-sm text-black border-l-4 border-indigo-500 p-4 mb-6 italic leading-relaxed shadow-sm"
               style={{ backgroundColor: COLORS.nationalAvgBg }}
             >

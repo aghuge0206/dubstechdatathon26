@@ -8,7 +8,7 @@ const NEXT_STEPS = [
   {
     title: "Weight sensitivity analysis",
     description:
-      "Test alternative weighting schemes (e.g., 2:1:1 favoring medical) to measure how sensitive the current rankings are to changes in component weights.",
+      "We experimented with alternative weighting schemes to test ranking stability. Future work could include literature research to determine whether empirical evidence justifies weighting certain barriers more heavily than others.",
   },
   {
     title: "Cross-demographic analysis",

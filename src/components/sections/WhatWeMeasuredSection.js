@@ -11,20 +11,26 @@ const METRICS = [
     id: "medical",
     title: "Unmet Medical Needs",
     field: "medical_unmet_pct",
-    description: "Percentage who couldn’t afford medical care in the past year.",
+    nhisVariable: "Could not afford medical care",
+    denominator: "Adults 18+",
+    description: "Percentage who couldn't afford medical care in the past year.",
     why: "The most universal healthcare access measure: when people are unable to afford a doctor, preventable conditions go untreated.",
   },
   {
     id: "mental",
     title: "Unmet Mental Health Needs",
     field: "mental_unmet_pct",
-    description: "Percentage who couldn’t afford mental health care or counseling in the past year.",
+    nhisVariable: "Could not afford mental health care/counseling",
+    denominator: "Adults 18+",
+    description: "Percentage who couldn't afford mental health care or counseling in the past year.",
     why: "This metric indicates some of the largest demographic disparities within the data, with certain groups reporting rates nearly 5 times the national average.",
   },
   {
     id: "medication",
     title: "Unmet Medication Needs",
     field: "medication_unmet_pct",
+    nhisVariable: "Did not take medication as prescribed to save money",
+    denominator: "Adults 18+",
     description: "Percentage who did not take medication as prescribed to save money in the past year.",
     why: "This is the single largest cost barrier nationally, meaning that even people who can reach a provider cannot always follow through with their treatment.",
   },
@@ -48,6 +54,8 @@ export function WhatWeMeasuredSection({ data }) {
                 title={metric.title}
                 description={metric.description}
                 why={metric.why}
+                nhisVariable={metric.nhisVariable}
+                denominator={metric.denominator}
               />
             </AnimatedSection>
           ))}
