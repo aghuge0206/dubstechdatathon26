@@ -11,12 +11,14 @@ import {
 } from "recharts";
 
 import { COLORS } from "@/data/constants";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 /**
  * Horizontal bar chart showing risk scores.
  * Top 3 bars are highlighted in red.
  */
 export function RiskScoreChart({ data }) {
+    const isMobile = useIsMobile();
     // Reverse for horizontal bar chart (highest at top)
     const chartData = [...data].reverse();
 
@@ -26,7 +28,7 @@ export function RiskScoreChart({ data }) {
                 <BarChart
                     data={chartData}
                     layout="vertical"
-                    margin={{ top: 0, right: 20, bottom: 0, left: 0 }}
+                    margin={{ top: 0, right: isMobile ? 10 : 20, bottom: 0, left: 0 }}
                 >
                     <XAxis
                         type="number"
@@ -38,10 +40,11 @@ export function RiskScoreChart({ data }) {
                     <YAxis
                         type="category"
                         dataKey="subgroup"
-                        width={150}
+                        width={isMobile ? 90 : 150}
                         tick={{ fontSize: 12, fill: "#475569" }}
                         tickLine={false}
                         axisLine={false}
+                        tickFormatter={isMobile ? (v) => (v.length > 12 ? v.slice(0, 12) + "\u2026" : v) : undefined}
                     />
                     <Tooltip
                         content={({ payload, active }) => {

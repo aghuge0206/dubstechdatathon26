@@ -1,6 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 import { chartTheme } from "@/lib/chartTheme";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 const BarChart = dynamic(() => import("recharts").then((m) => m.BarChart), { ssr: false });
 const Bar = dynamic(() => import("recharts").then((m) => m.Bar), { ssr: false });
@@ -31,6 +32,8 @@ function CustomTooltip({ active, payload, label }) {
 }
 
 export function DisparityBarChart({ data }) {
+  const isMobile = useIsMobile();
+
   // Add error bar data
   const chartData = data.map((d) => ({
     ...d,
@@ -40,15 +43,15 @@ export function DisparityBarChart({ data }) {
   return (
     <div style={{ width: "100%", height: 300 }}>
       <ResponsiveContainer>
-        <BarChart data={chartData} layout="vertical" margin={{ top: 5, right: 30, left: 80, bottom: 5 }}>
+        <BarChart data={chartData} layout="vertical" margin={{ top: 5, right: 30, left: isMobile ? 40 : 80, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={chartTheme.gridColor} horizontal={false} />
           <XAxis type="number" tick={{ fill: chartTheme.axisColor, fontSize: 12 }} domain={[0, "auto"]} unit="%" />
-          <YAxis type="category" dataKey="group" tick={{ fill: chartTheme.axisColor, fontSize: 12 }} width={75} />
+          <YAxis type="category" dataKey="group" tick={{ fill: chartTheme.axisColor, fontSize: 12 }} width={isMobile ? 50 : 75} />
           <Tooltip content={<CustomTooltip />} cursor={{ fill: "rgba(255,255,255,0.05)" }} />
-          <Bar 
-            dataKey="estimate" 
-            fill={chartTheme.colors.coral} 
-            radius={[0, 4, 4, 0]} 
+          <Bar
+            dataKey="estimate"
+            fill={chartTheme.colors.coral}
+            radius={[0, 4, 4, 0]}
             barSize={20}
             isAnimationActive={false}
           >

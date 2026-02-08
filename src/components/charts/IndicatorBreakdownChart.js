@@ -10,14 +10,19 @@ import {
     Legend,
 } from "recharts";
 import { COLORS } from "@/data/constants";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 /**
  * Stacked horizontal bar chart showing the 3 cost-barrier indicators
  * for each subgroup. National avg row styled distinctly.
  */
 
-function CustomYTick({ x, y, payload }) {
+function CustomYTick({ x, y, payload, isMobile }) {
     const isNatAvg = payload.value === "National Avg (18+)";
+    let label = payload.value;
+    if (isMobile && label.length > 12) {
+        label = label.slice(0, 12) + "\u2026";
+    }
     return (
         <text
             x={x}
@@ -30,22 +35,24 @@ function CustomYTick({ x, y, payload }) {
                 fontWeight: isNatAvg ? 700 : 400,
             }}
         >
-            {payload.value}
+            {label}
         </text>
     );
 }
 
 export function IndicatorBreakdownChart({ data }) {
+    const isMobile = useIsMobile();
     // Reverse so rank 1 appears at the top
     const chartData = [...data].reverse();
+    const rowHeight = isMobile ? 80 : 100;
 
     return (
-        <div style={{ height: chartData.length * 100 }}>
+        <div style={{ height: chartData.length * rowHeight }}>
             <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                     data={chartData}
                     layout="vertical"
-                    margin={{ top: 0, right: 30, bottom: 0, left: 0 }}
+                    margin={{ top: 0, right: isMobile ? 10 : 30, bottom: 0, left: 0 }}
                     barGap={4}
                 >
                     <XAxis
@@ -60,8 +67,8 @@ export function IndicatorBreakdownChart({ data }) {
                     <YAxis
                         type="category"
                         dataKey="subgroup"
-                        width={170}
-                        tick={<CustomYTick />}
+                        width={isMobile ? 90 : 170}
+                        tick={<CustomYTick isMobile={isMobile} />}
                         tickLine={false}
                         axisLine={false}
                     />

@@ -11,6 +11,7 @@ import {
     Cell,
     LabelList,
 } from "recharts";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 const CHART_DATA = [
     { name: "Medication", value: 7.8, fill: "#F87171" },
@@ -23,12 +24,14 @@ const CHART_DATA = [
  * for each of the 3 cost-barrier indicators.
  */
 export const IndicatorImportanceChart = memo(function IndicatorImportanceChart() {
+    const isMobile = useIsMobile();
+
     return (
         <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                     data={CHART_DATA}
-                    margin={{ top: 20, right: 20, bottom: 0, left: 20 }}
+                    margin={{ top: 20, right: isMobile ? 10 : 20, bottom: 0, left: isMobile ? 10 : 20 }}
                 >
                     <XAxis
                         dataKey="name"
@@ -43,10 +46,10 @@ export const IndicatorImportanceChart = memo(function IndicatorImportanceChart()
                         axisLine={false}
                         unit="%"
                     />
-                    <Bar 
-                        dataKey="value" 
-                        radius={[4, 4, 0, 0]} 
-                        barSize={60}
+                    <Bar
+                        dataKey="value"
+                        radius={[4, 4, 0, 0]}
+                        barSize={isMobile ? 40 : 60}
                         isAnimationActive={false}
                     >
                         {CHART_DATA.map((entry) => (

@@ -1,6 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 import { chartTheme } from "@/lib/chartTheme";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 const LineChart = dynamic(() => import("recharts").then((m) => m.LineChart), { ssr: false });
 const Line = dynamic(() => import("recharts").then((m) => m.Line), { ssr: false });
@@ -12,6 +13,8 @@ const Legend = dynamic(() => import("recharts").then((m) => m.Legend), { ssr: fa
 const ResponsiveContainer = dynamic(() => import("recharts").then((m) => m.ResponsiveContainer), { ssr: false });
 
 export function TrendLineChart({ series }) {
+  const isMobile = useIsMobile();
+
   // Merge all series into one flat array keyed by year
   const years = [...new Set(series.flatMap((s) => s.data.map((d) => d.year)))].sort();
   const merged = years.map((year) => {
@@ -26,7 +29,7 @@ export function TrendLineChart({ series }) {
   return (
     <div style={{ width: "100%", height: 300 }}>
       <ResponsiveContainer>
-        <LineChart data={merged} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+        <LineChart data={merged} margin={{ top: 5, right: isMobile ? 10 : 30, left: isMobile ? 5 : 20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={chartTheme.gridColor} />
           <XAxis dataKey="year" tick={{ fill: chartTheme.axisColor, fontSize: 12 }} />
           <YAxis tick={{ fill: chartTheme.axisColor, fontSize: 12 }} unit="%" />
