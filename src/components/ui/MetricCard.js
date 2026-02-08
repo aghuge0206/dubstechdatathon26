@@ -3,19 +3,25 @@
 /**
  * Card explaining a measured metric.
  */
-export function MetricCard({ title, value, description, why }) {
+export function MetricCard({ title, description, why }) {
     return (
-        <div className="card h-full">
-            <div className="flex items-start justify-between mb-4">
-                <h3 className="font-serif text-xl text-foreground">{title}</h3>
-                <span className="font-mono text-lg font-bold text-foreground bg-slate-100 rounded-lg px-3 py-1">{value}</span>
+        <div className="card h-full flex flex-col">
+            <div className="mb-6">
+                <h3 className="font-serif text-xl text-foreground leading-tight">{title}</h3>
             </div>
 
-            <p className="text-foreground-secondary mb-4">{description}</p>
+            <p className="text-foreground-secondary mb-8 flex-grow leading-relaxed">
+                {description}
+            </p>
 
-            <div className="pt-4 border-t border-slate-100">
+            <div className="pt-5 border-t border-slate-50">
                 <p className="text-sm text-foreground-tertiary">
-                    <strong className="text-foreground-secondary">Why it matters:</strong> {why}
+                    <strong className="text-red-600 font-semibold uppercase tracking-wider text-[10px] block mb-1">
+                        Why it matters
+                    </strong>
+                    <span className="text-slate-600 italic leading-snug">
+                        {why}
+                    </span>
                 </p>
             </div>
         </div>
