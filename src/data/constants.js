@@ -1,15 +1,22 @@
 export const SECTION_IDS = {
-  hero: "hero",
+  title: "title",
+  introduction: "introduction",
   measured: "what-we-measured",
   methodology: "how-it-works",
+  keyFinding: "key-finding",
   rankings: "rankings",
+  visualizations: "visualizations",
   insights: "insights",
   matters: "why-it-matters",
+  nextSteps: "next-steps",
   limitations: "limitations",
 };
 
 export const TEAM = {
-  members: ["Akshat Ghuge", "Yonie Rivera-Aguilar"],
+  members: [
+    { name: "Akshat Ghuge", linkedin: "https://www.linkedin.com/in/akshat-ghuge/" },
+    { name: "Yonie Rivera-Aguilar", linkedin: "https://www.linkedin.com/in/yirivera/" },
+  ],
   github: "https://github.com/aghuge0206/dubstechdatathon26",
   event: "DubsTech Datathon 2026",
   track: "Data Analysis",

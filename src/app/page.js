@@ -2,12 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { getCareGapData } from "@/lib/getCareGapData";
-import { HeroSection } from "@/components/sections/HeroSection";
+import { TitleSection } from "@/components/sections/TitleSection";
+import { IntroductionSection } from "@/components/sections/IntroductionSection";
 import { WhatWeMeasuredSection } from "@/components/sections/WhatWeMeasuredSection";
 import { HowScoreWorksSection } from "@/components/sections/HowScoreWorksSection";
+import { KeyFindingSection } from "@/components/sections/KeyFindingSection";
 import { RankingsSection } from "@/components/sections/RankingsSection";
 import { InsightsSection } from "@/components/sections/InsightsSection";
 import { WhyItMattersSection } from "@/components/sections/WhyItMattersSection";
+import { NextStepsSection } from "@/components/sections/NextStepsSection";
 import { LimitationsSection } from "@/components/sections/LimitationsSection";
 import { Footer } from "@/components/layout/Footer";
 
@@ -53,12 +56,16 @@ export default function Home() {
   return (
     <>
       <main>
-        <HeroSection data={data} isPlaceholder={isPlaceholder} />
+        <TitleSection isPlaceholder={isPlaceholder} />
+        <IntroductionSection />
         <WhatWeMeasuredSection data={data} />
         <HowScoreWorksSection />
+        <KeyFindingSection data={data} />
         <RankingsSection data={data} />
-        <InsightsSection data={data} />
+        {/* Visualizations — placeholder for teammate's branch */}
+        <InsightsSection />
         <WhyItMattersSection />
+        <NextStepsSection />
         <LimitationsSection />
       </main>
       <Footer />
