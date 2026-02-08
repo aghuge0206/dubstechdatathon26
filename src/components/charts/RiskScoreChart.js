@@ -7,7 +7,7 @@ import {
     YAxis,
     ResponsiveContainer,
     Cell,
-    LabelList,
+    Tooltip,
 } from "recharts";
 
 /**
@@ -24,11 +24,11 @@ export function RiskScoreChart({ data }) {
                 <BarChart
                     data={chartData}
                     layout="vertical"
-                    margin={{ top: 0, right: 60, bottom: 0, left: 0 }}
+                    margin={{ top: 0, right: 20, bottom: 0, left: 0 }}
                 >
                     <XAxis
                         type="number"
-                        domain={[0, "dataMax"]}
+                        domain={[0, 3]}
                         tick={{ fontSize: 12, fill: "#64748B" }}
                         tickLine={false}
                         axisLine={false}
@@ -41,22 +41,30 @@ export function RiskScoreChart({ data }) {
                         tickLine={false}
                         axisLine={false}
                     />
+                    <Tooltip
+                        contentStyle={{
+                            background: "#1E293B",
+                            border: "1px solid rgba(255,255,255,0.2)",
+                            borderRadius: 8,
+                            color: "#F1F5F9",
+                        }}
+                        labelStyle={{ color: "#F1F5F9" }}
+                        formatter={(value) => [value.toFixed(2), "Risk Score"]}
+                        itemStyle={{ color: "#F1F5F9" }}
+                        cursor={{ fill: "rgba(0,0,0,0.05)" }}
+                    />
                     <Bar dataKey="risk_score" radius={[0, 4, 4, 0]}>
                         {chartData.map((entry, index) => {
-                            const isTopThree = entry.rank <= 3;
+                            let fill = "#CBD5E1"; // default grey
+                            if (entry.isNationalAvg) fill = "#60A5FA"; // blue for national avg
+                            else if (entry.rank <= 3) fill = "#F87171"; // red for top 3
                             return (
                                 <Cell
                                     key={entry.subgroup}
-                                    fill={isTopThree ? "#DC2626" : "#CBD5E1"}
+                                    fill={fill}
                                 />
                             );
                         })}
-                        <LabelList
-                            dataKey="risk_score"
-                            position="right"
-                            formatter={(value) => value.toFixed(2)}
-                            style={{ fontSize: 12, fontFamily: "monospace", fill: "#0F172A" }}
-                        />
                     </Bar>
                 </BarChart>
             </ResponsiveContainer>

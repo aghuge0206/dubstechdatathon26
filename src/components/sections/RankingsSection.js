@@ -6,6 +6,8 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RubricTag } from "@/components/ui/RubricTag";
 import { RankingsTable } from "@/components/ui/RankingsTable";
 import { RiskScoreChart } from "@/components/charts/RiskScoreChart";
+import { IndicatorBreakdownChart } from "@/components/charts/IndicatorBreakdownChart";
+import { IndicatorImportanceChart } from "@/components/charts/IndicatorImportanceChart";
 import { SECTION_IDS } from "@/data/constants";
 
 const FILTERS = [
@@ -35,7 +37,15 @@ function getFilteredData(data, activeFilter) {
 
 export function RankingsSection({ data }) {
   const [activeFilter, setActiveFilter] = useState("top15");
-  const topForChart = data.slice(0, 10);
+
+  // Chart data: top 10 + National Avg row (friend's visualization logic)
+  const nationalAvg = data.find((d) => d.subgroup === "18 years and older");
+  const topForChart = [
+    ...data.slice(0, 10),
+    ...(nationalAvg ? [{ ...nationalAvg, subgroup: "National Avg (18+)", isNationalAvg: true }] : []),
+  ];
+
+  // Table data: pill-filtered
   const filteredData = getFilteredData(data, activeFilter);
   const isNationalAvg = activeFilter === "nationalAvg";
 
@@ -57,6 +67,22 @@ export function RankingsSection({ data }) {
           <div className="mt-8 mb-12">
             <h3 className="font-serif text-lg text-foreground mb-4">Top 10 Highest-Risk Groups</h3>
             <RiskScoreChart data={topForChart} />
+          </div>
+        </AnimatedSection>
+
+        {/* Indicator Breakdown */}
+        <AnimatedSection delay={0.15}>
+          <div className="mt-8 mb-12">
+            <h3 className="font-serif text-lg text-foreground mb-4">What Drives Each Group's Score?</h3>
+            <IndicatorBreakdownChart data={topForChart} />
+          </div>
+        </AnimatedSection>
+
+        {/* Indicator Importance */}
+        <AnimatedSection delay={0.18}>
+          <div className="mt-8 mb-12">
+            <h3 className="font-serif text-lg text-foreground mb-4">Which Barrier Hits Hardest Nationally?</h3>
+            <IndicatorImportanceChart />
           </div>
         </AnimatedSection>
 
