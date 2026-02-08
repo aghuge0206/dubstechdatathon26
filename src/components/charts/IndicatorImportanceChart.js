@@ -1,5 +1,6 @@
 "use client";
 
+import React, { memo } from "react";
 import {
     BarChart,
     Bar,
@@ -21,7 +22,7 @@ const CHART_DATA = [
  * Simple vertical bar chart showing the national average %
  * for each of the 3 cost-barrier indicators.
  */
-export function IndicatorImportanceChart() {
+export const IndicatorImportanceChart = memo(function IndicatorImportanceChart() {
     return (
         <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
@@ -42,19 +43,12 @@ export function IndicatorImportanceChart() {
                         axisLine={false}
                         unit="%"
                     />
-                    <Tooltip
-                        contentStyle={{
-                            background: "#1E293B",
-                            border: "1px solid rgba(255,255,255,0.2)",
-                            borderRadius: 8,
-                            color: "#F1F5F9",
-                        }}
-                        labelStyle={{ color: "#F1F5F9" }}
-                        itemStyle={{ color: "#F1F5F9" }}
-                        formatter={(value) => [`${value}%`, "National Avg"]}
-                        cursor={{ fill: "rgba(0,0,0,0.05)" }}
-                    />
-                    <Bar dataKey="value" radius={[4, 4, 0, 0]} barSize={60}>
+                    <Bar 
+                        dataKey="value" 
+                        radius={[4, 4, 0, 0]} 
+                        barSize={60}
+                        isAnimationActive={false}
+                    >
                         {CHART_DATA.map((entry) => (
                             <Cell key={entry.name} fill={entry.fill} />
                         ))}
@@ -69,4 +63,4 @@ export function IndicatorImportanceChart() {
             </ResponsiveContainer>
         </div>
     );
-}
+});

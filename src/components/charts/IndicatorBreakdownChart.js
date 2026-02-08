@@ -83,6 +83,7 @@ export function IndicatorBreakdownChart({ data }) {
                         stackId="a"
                         fill="#60A5FA"
                         barSize={20}
+                        isAnimationActive={false}
                     />
                     <Bar
                         dataKey="medication_unmet_pct"
@@ -90,6 +91,7 @@ export function IndicatorBreakdownChart({ data }) {
                         stackId="a"
                         fill="#FBBF24"
                         barSize={20}
+                        isAnimationActive={false}
                     />
                     <Bar
                         dataKey="mental_unmet_pct"
@@ -98,6 +100,7 @@ export function IndicatorBreakdownChart({ data }) {
                         fill="#F472B6"
                         radius={[0, 4, 4, 0]}
                         barSize={20}
+                        isAnimationActive={false}
                     />
                 </BarChart>
             </ResponsiveContainer>

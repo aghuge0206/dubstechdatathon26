@@ -53,7 +53,11 @@ export function RiskScoreChart({ data }) {
                         itemStyle={{ color: "#F1F5F9" }}
                         cursor={{ fill: "rgba(0,0,0,0.05)" }}
                     />
-                    <Bar dataKey="risk_score" radius={[0, 4, 4, 0]}>
+                    <Bar 
+                        dataKey="risk_score" 
+                        radius={[0, 4, 4, 0]}
+                        isAnimationActive={false}
+                    >
                         {chartData.map((entry, index) => {
                             let fill = "#CBD5E1"; // default grey
                             if (entry.isNationalAvg) fill = "#60A5FA"; // blue for national avg
