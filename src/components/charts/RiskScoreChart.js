@@ -44,19 +44,27 @@ export function RiskScoreChart({ data }) {
                         axisLine={false}
                     />
                     <Tooltip
-                        contentStyle={{
-                            background: "#1E293B",
-                            border: "1px solid rgba(255,255,255,0.2)",
-                            borderRadius: 8,
-                            color: "#F1F5F9",
+                        content={({ payload, active }) => {
+                            if (!active || !payload || !payload.length) return null;
+                            const d = payload[0].payload;
+                            return (
+                                <div className="bg-slate-800 text-white text-xs px-3 py-2 rounded shadow-lg">
+                                    <p className="font-medium mb-1">{d.subgroup}</p>
+                                    <div className="space-y-0.5 text-slate-300">
+                                        <p>Medical: {d.medical_unmet_pct}%</p>
+                                        <p>Mental: {d.mental_unmet_pct}%</p>
+                                        <p>Medication: {d.medication_unmet_pct}%</p>
+                                    </div>
+                                    <p className="mt-1 pt-1 border-t border-slate-600 font-bold text-white">
+                                        Risk Score: {d.risk_score.toFixed(2)} / 3.00
+                                    </p>
+                                </div>
+                            );
                         }}
-                        labelStyle={{ color: "#F1F5F9" }}
-                        formatter={(value) => [`${value.toFixed(2)} / 3.00`, "Risk Score"]}
-                        itemStyle={{ color: "#F1F5F9" }}
                         cursor={{ fill: "rgba(0,0,0,0.05)" }}
                     />
-                    <Bar 
-                        dataKey="risk_score" 
+                    <Bar
+                        dataKey="risk_score"
                         radius={[0, 4, 4, 0]}
                         isAnimationActive={false}
                     >

@@ -23,7 +23,7 @@ const LIMITATIONS = [
   },
   {
     title: "Equal weighting assumption",
-    body: "The 1:1:1 weighting treats all three barrier dimensions as equally important. Alternative schemes could produce different rankings.",
+    body: "We experimented with alternative weightings to test sensitivity, but equal weights (1:1:1) were used because the dataset does not yet provide clear evidence for prioritizing one barrier over another. Future research could explore whether differential weighting is justified.",
   },
   {
     title: "Cross-sectional snapshot",
