@@ -1,9 +1,9 @@
 "use client";
 
 /**
- * Prominent card highlighting the #1 highest-risk subgroup.
+ * Prominent card highlighting a high-risk subgroup.
  */
-export function KeyFindingCard({ topGroup }) {
+export function KeyFindingCard({ topGroup, rank = 1, customSummary }) {
   if (!topGroup) return null;
 
   return (
@@ -12,20 +12,21 @@ export function KeyFindingCard({ topGroup }) {
         {/* Rank badge */}
         <div className="flex-shrink-0">
           <div className="w-12 h-12 rounded-full bg-red-600 text-white flex items-center justify-center">
-            <span className="text-xl font-bold">#1</span>
+            <span className="text-xl font-bold">#{rank}</span>
           </div>
         </div>
 
         {/* Content */}
         <div className="flex-grow">
-          <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-red-600 mb-1 font-bold">
-            Highest Risk Group
-          </p>
           <h2 className="font-serif text-xl md:text-2xl text-foreground mb-1 leading-tight">
             {topGroup.subgroup}
           </h2>
           <p className="text-sm text-slate-600 leading-relaxed max-w-2xl">
-            Critical care gap identified: <span className="font-semibold text-foreground">{topGroup.medical_unmet_pct}%</span> unmet medical and <span className="font-semibold text-foreground">{topGroup.mental_unmet_pct}%</span> unmet mental health needs.
+            {customSummary || (
+              <>
+                Critical care gap identified: <span className="font-semibold text-foreground">{topGroup.medical_unmet_pct}%</span> unmet medical and <span className="font-semibold text-foreground">{topGroup.mental_unmet_pct}%</span> unmet mental health needs.
+              </>
+            )}
           </p>
         </div>
 
@@ -34,6 +35,7 @@ export function KeyFindingCard({ topGroup }) {
           <p className="text-[10px] uppercase tracking-widest text-slate-400 mb-0 font-bold">Risk Score</p>
           <p className="font-mono text-3xl font-black text-red-600">
             {topGroup.risk_score.toFixed(2)}
+            <span className="text-sm text-slate-400 font-normal ml-1">/ 3.0</span>
           </p>
         </div>
       </div>

@@ -10,6 +10,8 @@ import {
     Tooltip,
 } from "recharts";
 
+import { COLORS } from "@/data/constants";
+
 /**
  * Horizontal bar chart showing risk scores.
  * Top 3 bars are highlighted in red.
@@ -49,7 +51,7 @@ export function RiskScoreChart({ data }) {
                             color: "#F1F5F9",
                         }}
                         labelStyle={{ color: "#F1F5F9" }}
-                        formatter={(value) => [value.toFixed(2), "Risk Score"]}
+                        formatter={(value) => [`${value.toFixed(2)} / 3.00`, "Risk Score"]}
                         itemStyle={{ color: "#F1F5F9" }}
                         cursor={{ fill: "rgba(0,0,0,0.05)" }}
                     />
@@ -60,7 +62,7 @@ export function RiskScoreChart({ data }) {
                     >
                         {chartData.map((entry, index) => {
                             let fill = "#CBD5E1"; // default grey
-                            if (entry.isNationalAvg) fill = "#60A5FA"; // blue for national avg
+                            if (entry.isNationalAvg) fill = COLORS.nationalAvg; // indigo for national avg baseline
                             else if (entry.rank <= 3) fill = "#F87171"; // red for top 3
                             return (
                                 <Cell
