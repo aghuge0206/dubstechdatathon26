@@ -16,7 +16,7 @@ export function ProcessSection({ data }) {
           />
         </AnimatedSection>
 
-        <div className="max-w-3xl">
+        <div className="max-w-3xl mt-16">
           <PipelineDiagram steps={data.steps} />
         </div>
       </div>

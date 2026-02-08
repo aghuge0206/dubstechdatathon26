@@ -43,42 +43,42 @@ const problem = {
 const process = {
   heading: "Our Process",
   rubricLabel: "Process",
-  description: "A rigorous, reproducible methodology for measuring health equity.",
+  description: "A rigorous, reproducible methodology for measuring healthcare access disparities.",
   steps: [
     {
       number: 1,
-      title: "Data Acquisition",
+      title: "Data Loading & Exploration",
       description:
-        "Downloaded NHIS Access to Care microdata (2019-2024) covering 26,000+ respondents across 54 health conditions.",
-      tools: ["NHIS API", "Python"],
+        "Loaded NHIS Access to Care dataset (2019-2024) with 26,000+ data points across 54 health topics. Explored unique topics and identified 3 key access-to-care indicators.",
+      tools: ["Python", "Pandas", "Jupyter", "CSV"],
     },
     {
       number: 2,
-      title: "Cleaning & Preprocessing",
+      title: "Data Filtering & Cleaning",
       description:
-        "Handled missing values, standardized demographic categories, aligned variable names across survey years.",
-      tools: ["Pandas", "NumPy"],
+        "Filtered for 2024 data across 3 critical indicators: unmet medical care, unmet mental health care, and medication cost barriers. Handled duplicate subgroups and removed incomplete records.",
+      tools: ["Pandas", "Python"],
     },
     {
       number: 3,
-      title: "Exploratory Analysis",
+      title: "Data Transformation",
       description:
-        "Visualized access-to-care estimates across demographics, identified significant disparities using confidence intervals.",
-      tools: ["Matplotlib", "Seaborn"],
+        "Pivoted data to create one row per demographic subgroup. Applied min-max normalization (0-1 scaling) to each indicator for fair comparison across different measurement scales.",
+      tools: ["Pandas", "NumPy"],
     },
     {
       number: 4,
-      title: "Metric Development",
+      title: "Risk Score Calculation",
       description:
-        "Created the Health Equity Gap Index (HEGI) -- a composite score measuring access disparity severity per demographic group.",
-      tools: ["Statistical Modeling", "Python"],
+        "Created composite risk scores by summing the 3 normalized indicators with equal weights. Ranked all 76 demographic subgroups by risk score to identify disparities.",
+      tools: ["Python", "Statistical Modeling"],
     },
     {
       number: 5,
-      title: "Validation & Ranking",
+      title: "Visualization & Export",
       description:
-        "Validated HEGI against known disparities, ranked all demographic groups by equity gap severity.",
-      tools: ["Hypothesis Testing", "Recharts"],
+        "Exported ranked data to JSON format. Built interactive visualizations using React and Recharts to communicate findings through an accessible web interface.",
+      tools: ["React", "Next.js", "Recharts", "TailwindCSS"],
     },
   ],
 };
@@ -308,4 +308,5 @@ const footer = {
     "National Center for Health Statistics. National Health Interview Survey, 2019-2024. Public-use data file and documentation.",
 };
 
-export default { hero, problem, process, exploration, metric, rankings, insights, footer };
+const data = { hero, problem, process, exploration, metric, rankings, insights, footer };
+export default data;
