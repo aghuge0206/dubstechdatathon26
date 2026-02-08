@@ -9,17 +9,17 @@ const STEPS = [
   {
     number: 1,
     title: "Normalize",
-    description: "Convert each metric to a 0–1 scale so medical, mental health, and medication needs are comparable.",
+    description: "Each metric (medical, mental health, medication) is rescaled to a 0\u20131 range using min-max normalization: (value \u2212 min) / (max \u2212 min). This makes the three metrics directly comparable regardless of their original scales.",
   },
   {
     number: 2,
     title: "Combine",
-    description: "Sum the normalized values into a single composite score for each demographic subgroup.",
+    description: "The three normalized values are summed with equal weights (1:1:1) to produce a single composite score. Equal weighting was chosen because the NHIS data provides no empirical basis to prioritize one barrier dimension over another.",
   },
   {
     number: 3,
     title: "Rank",
-    description: "Sort all 76 subgroups from highest to lowest. Higher score = greater access barriers.",
+    description: "All 76 subgroups are sorted from highest to lowest composite score. Scores range from 0.004 (lowest risk) to 2.544 (highest risk). A higher score indicates greater compounding barriers to care.",
   },
 ];
 
@@ -30,6 +30,7 @@ export function HowScoreWorksSection() {
         <AnimatedSection>
           <div className="flex flex-wrap items-center gap-3 mb-2">
             <RubricTag label="Process Explained" />
+            <RubricTag label="Metric Described" />
           </div>
           <SectionHeading
             title="How the Score Works"
@@ -59,11 +60,18 @@ export function HowScoreWorksSection() {
             <span className="px-3 py-1 bg-slate-100 rounded">mental</span>
             <span>+</span>
             <span className="px-3 py-1 bg-slate-100 rounded">medication</span>
-            <span>→</span>
+            <span>&rarr;</span>
             <span className="px-3 py-1 bg-red-50 text-red-700 rounded font-medium">risk_score</span>
-            <span>→</span>
+            <span>&rarr;</span>
             <span className="px-3 py-1 bg-slate-800 text-white rounded">rank</span>
           </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.5}>
+          <p className="mt-6 text-sm text-foreground-tertiary text-center max-w-2xl mx-auto">
+            Equal weighting assumes each barrier dimension contributes equally to overall care access risk.
+            Sensitivity analysis with alternative weighting schemes is noted as future work.
+          </p>
         </AnimatedSection>
       </div>
     </section>
