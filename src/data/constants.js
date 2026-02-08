@@ -1,6 +1,7 @@
 export const SECTION_IDS = {
   title: "title",
   introduction: "introduction",
+  process: "our-process",
   measured: "what-we-measured",
   methodology: "how-it-works",
   keyFinding: "key-finding",

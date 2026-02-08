@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { getCareGapData } from "@/lib/getCareGapData";
 import { TitleSection } from "@/components/sections/TitleSection";
 import { IntroductionSection } from "@/components/sections/IntroductionSection";
+import { ProcessSection } from "@/components/sections/ProcessSection";
 import { WhatWeMeasuredSection } from "@/components/sections/WhatWeMeasuredSection";
 import { HowScoreWorksSection } from "@/components/sections/HowScoreWorksSection";
 import { KeyFindingSection } from "@/components/sections/KeyFindingSection";
@@ -13,6 +14,7 @@ import { WhyItMattersSection } from "@/components/sections/WhyItMattersSection";
 import { NextStepsSection } from "@/components/sections/NextStepsSection";
 import { LimitationsSection } from "@/components/sections/LimitationsSection";
 import { Footer } from "@/components/layout/Footer";
+import staticData from "@/data/data";
 
 export default function Home() {
   const [data, setData] = useState(null);
@@ -58,6 +60,7 @@ export default function Home() {
       <main>
         <TitleSection isPlaceholder={isPlaceholder} />
         <IntroductionSection />
+        <ProcessSection data={staticData.process} />
         <WhatWeMeasuredSection data={data} />
         <HowScoreWorksSection />
         <KeyFindingSection data={data} />
