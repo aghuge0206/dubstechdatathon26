@@ -26,11 +26,11 @@ export function TitleSection({ isPlaceholder }) {
             </span>
           </div>
 
-          <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-4 max-w-3xl">
-            Care Gap Risk Score
+          <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-4 max-w-4xl">
+            United States Care Gap Risk Assessment
           </h1>
 
-          <p className="text-lg text-foreground-secondary max-w-2xl mb-6">
+          <p className="text-lg text-foreground-secondary max-w-4xl mb-8">
             Which demographic subgroups face the greatest barriers to healthcare
             access in the United States?
           </p>

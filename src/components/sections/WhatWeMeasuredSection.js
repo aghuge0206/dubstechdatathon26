@@ -31,13 +31,6 @@ const METRICS = [
 ];
 
 export function WhatWeMeasuredSection({ data }) {
-  // Calculate averages across all subgroups
-  const avgMedical = (data.reduce((sum, d) => sum + d.medical_unmet_pct, 0) / data.length).toFixed(1);
-  const avgMental = (data.reduce((sum, d) => sum + d.mental_unmet_pct, 0) / data.length).toFixed(1);
-  const avgMedication = (data.reduce((sum, d) => sum + (d.medication_unmet_pct || 0), 0) / data.length).toFixed(1);
-
-  const averages = [avgMedical, avgMental, avgMedication];
-
   return (
     <section id={SECTION_IDS.measured} className="bg-white border-b border-slate-200">
       <div className="section-container">
@@ -53,7 +46,6 @@ export function WhatWeMeasuredSection({ data }) {
             <AnimatedSection key={metric.id} delay={i * 0.1}>
               <MetricCard
                 title={metric.title}
-                value={`${averages[i]}%`}
                 description={metric.description}
                 why={metric.why}
               />
