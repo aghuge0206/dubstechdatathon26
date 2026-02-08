@@ -14,8 +14,8 @@ const RECOMMENDATIONS = [
         action: "Focus insurance enrollment efforts on the uninsured, who face medical access barriers at 3x the rate of insured populations.",
     },
     {
-        title: "Integrate disability accommodations",
-        action: "Ensure healthcare facilities address both physical and mental health access for populations with disabilities.",
+        title: "Address prescription cost barriers",
+        action: "Medication affordability is the most widespread barrier nationally. Expanding prescription assistance programs and generic drug access could reduce this barrier across all demographics.",
     },
 ];
 
@@ -26,7 +26,7 @@ export function WhyItMattersSection() {
                 <AnimatedSection>
                     <SectionHeading
                         title="Why It Matters"
-                        description="Actionable prioritization, not policy promises."
+                        description="Where policymakers, insurers, and providers should focus first."
                     />
                 </AnimatedSection>
 

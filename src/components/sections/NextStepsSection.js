@@ -8,22 +8,22 @@ const NEXT_STEPS = [
   {
     title: "Weight sensitivity analysis",
     description:
-      "Test alternative weighting schemes (e.g., 2:1:1 favoring medical) to measure how robust the current rankings are to changes in component weights.",
+      "Test alternative weighting schemes (e.g., 2:1:1 favoring medical) to measure how sensitive the current rankings are to changes in component weights.",
   },
   {
-    title: "Intersectional subgroup analysis",
+    title: "Cross-demographic analysis",
     description:
       "Cross demographic categories (e.g., uninsured + disability) to identify compounding risk factors that single-axis analysis cannot capture.",
   },
   {
-    title: "Temporal trend analysis",
+    title: "Survey across multiple years",
     description:
       "Compare NHIS data across multiple survey years to detect whether care gap disparities are widening, narrowing, or stable over time.",
   },
   {
-    title: "Policy impact modeling",
+    title: "Validate across external data sources",
     description:
-      "Map high-risk subgroups to specific policy interventions and model projected score reductions under different scenarios.",
+      "Cross-reference NHIS rankings against other nationwide medical surveys like BRFSS to test whether the same subgroups consistently appear at the top, increasing confidence in our findings.",
   },
 ];
 

@@ -8,17 +8,17 @@ const STEPS = [
   {
     number: 1,
     title: "Normalize",
-    description: "Each metric (medical, mental health, medication) is rescaled to a 0\u20131 range using min-max normalization: (value \u2212 min) / (max \u2212 min). This makes the three metrics directly comparable regardless of their original scales.",
+    description: "Each metric (medical, mental health, medication) is rescaled to a 0\u20131 range using min-max normalization: (value \u2212 min) / (max \u2212 min). This makes the three metrics directly comparable regardless of their different ranges.",
   },
   {
     number: 2,
     title: "Combine",
-    description: "The three normalized values are summed with equal weights (1:1:1) to produce a single composite score. Equal weighting was chosen because the NHIS data provides no empirical basis to prioritize one barrier dimension over another.",
+    description: "The three normalized values are summed with equal weights (1:1:1) to produce a single composite score ranging from 0-3, where 0 indicates the lowest healthcare risk and 3 the highest risk. Equal weighting was chosen because the NHIS data provides no empirical basis to prioritize one barrier dimension over another.",
   },
   {
     number: 3,
     title: "Rank",
-    description: "All 76 subgroups are sorted from highest to lowest composite score. Scores range from 0.004 (lowest risk) to 2.544 (highest risk). A higher score indicates greater compounding barriers to care.",
+    description: "All 76 subgroups are sorted from highest to lowest composite score. A higher score indicates a greater barrier to care.",
   },
 ];
 
@@ -56,17 +56,21 @@ export function HowScoreWorksSection() {
             <span>+</span>
             <span className="px-3 py-1 bg-slate-100 rounded">medication</span>
             <span>&rarr;</span>
-            <span className="px-3 py-1 bg-red-50 text-red-700 rounded font-medium">risk_score</span>
+            <span className="px-3 py-1 bg-red-50 text-red-700 rounded font-medium italic">risk score</span>
             <span>&rarr;</span>
             <span className="px-3 py-1 bg-slate-800 text-white rounded">rank</span>
           </div>
         </AnimatedSection>
 
         <AnimatedSection delay={0.5}>
-          <p className="mt-6 text-sm text-foreground-tertiary text-center max-w-2xl mx-auto">
-            Equal weighting assumes each barrier dimension contributes equally to overall care access risk.
-            Sensitivity analysis with alternative weighting schemes is noted as future work.
-          </p>
+          <div className="mt-10 space-y-4 max-w-2xl mx-auto text-center">
+            <p className="text-sm font-medium text-slate-600 italic">
+              A risk score of 0 means a subgroup had the lowest value across all three indicators. A score near 3 means it had the highest. Most subgroups fall between 0.2 and 0.8.
+            </p>
+            <p className="text-[10px] text-foreground-tertiary uppercase tracking-wider">
+              Equal weighting assumes each barrier dimension contributes equally to overall care access risk.
+            </p>
+          </div>
         </AnimatedSection>
       </div>
     </section>
