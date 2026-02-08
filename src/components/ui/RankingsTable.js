@@ -2,11 +2,7 @@
 
 import { motion } from "framer-motion";
 
-/**
- * Table showing ranked subgroups with risk scores.
- * Top 3 rows are highlighted in red.
- */
-export function RankingsTable({ data }) {
+export function RankingsTable({ data, highlight = false }) {
   return (
     <div className="overflow-x-auto">
       <table className="w-full text-left">
@@ -35,6 +31,7 @@ export function RankingsTable({ data }) {
         <tbody>
           {data.map((row, i) => {
             const isTopThree = row.rank <= 3;
+            const isHighlighted = highlight && !isTopThree;
 
             return (
               <motion.tr
@@ -43,8 +40,8 @@ export function RankingsTable({ data }) {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.03 }}
                 className={`
-                  border-b border-slate-100 
-                  ${isTopThree ? "bg-red-50" : "hover:bg-slate-50"}
+                  border-b border-slate-100
+                  ${isTopThree ? "bg-red-50" : isHighlighted ? "bg-blue-50 border-blue-200" : "hover:bg-slate-50"}
                   transition-colors
                 `}
               >

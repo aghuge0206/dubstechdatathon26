@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RubricTag } from "@/components/ui/RubricTag";
@@ -7,10 +8,36 @@ import { RankingsTable } from "@/components/ui/RankingsTable";
 import { RiskScoreChart } from "@/components/charts/RiskScoreChart";
 import { SECTION_IDS } from "@/data/constants";
 
+const FILTERS = [
+  { key: "top5", label: "Top 5" },
+  { key: "top10", label: "Top 10" },
+  { key: "top15", label: "Top 15" },
+  { key: "bottom5", label: "Bottom 5" },
+  { key: "bottom10", label: "Bottom 10" },
+  { key: "bottom15", label: "Bottom 15" },
+  { key: "nationalAvg", label: "National Avg" },
+  { key: "all", label: "All" },
+];
+
+function getFilteredData(data, activeFilter) {
+  switch (activeFilter) {
+    case "top5": return data.slice(0, 5);
+    case "top10": return data.slice(0, 10);
+    case "top15": return data.slice(0, 15);
+    case "bottom5": return data.slice(-5);
+    case "bottom10": return data.slice(-10);
+    case "bottom15": return data.slice(-15);
+    case "nationalAvg": return data.filter((d) => d.subgroup === "18 years and older");
+    case "all": return data;
+    default: return data.slice(0, 15);
+  }
+}
+
 export function RankingsSection({ data }) {
-  // Show top 15 in table, top 10 in chart
-  const topForTable = data.slice(0, 15);
+  const [activeFilter, setActiveFilter] = useState("top15");
   const topForChart = data.slice(0, 10);
+  const filteredData = getFilteredData(data, activeFilter);
+  const isNationalAvg = activeFilter === "nationalAvg";
 
   return (
     <section id={SECTION_IDS.rankings} className="bg-white border-b border-slate-200">
@@ -33,10 +60,35 @@ export function RankingsSection({ data }) {
           </div>
         </AnimatedSection>
 
-        {/* Table */}
+        {/* Pill Filters */}
         <AnimatedSection delay={0.2}>
-          <h3 className="font-serif text-lg text-foreground mb-4">Full Rankings (Top 15)</h3>
-          <RankingsTable data={topForTable} />
+          <div className="flex flex-wrap gap-2 mb-6">
+            {FILTERS.map((filter) => (
+              <button
+                key={filter.key}
+                onClick={() => setActiveFilter(filter.key)}
+                className={`rounded-full px-4 py-1.5 text-sm font-mono transition-colors ${
+                  activeFilter === filter.key
+                    ? "bg-slate-800 text-white"
+                    : "bg-slate-100 text-foreground-secondary hover:bg-slate-200"
+                }`}
+              >
+                {filter.label}
+              </button>
+            ))}
+          </div>
+        </AnimatedSection>
+
+        {/* Table */}
+        <AnimatedSection delay={0.3}>
+          <h3 className="font-serif text-lg text-foreground mb-4">Rankings</h3>
+          {isNationalAvg && (
+            <p className="text-sm text-foreground-tertiary mb-4">
+              The &ldquo;18 years and older&rdquo; row represents all adults in the NHIS survey — the population-level baseline.
+              Its score sits near the dataset mean, providing a reference point for comparing high-risk and low-risk subgroups.
+            </p>
+          )}
+          <RankingsTable data={filteredData} highlight={isNationalAvg} />
         </AnimatedSection>
       </div>
     </section>
