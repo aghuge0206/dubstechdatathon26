@@ -3,7 +3,6 @@
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { KeyFindingCard } from "@/components/ui/KeyFindingCard";
-import { RubricTag } from "@/components/ui/RubricTag";
 import { SECTION_IDS } from "@/data/constants";
 
 export function KeyFindingSection({ data }) {
@@ -23,11 +22,6 @@ export function KeyFindingSection({ data }) {
           </div>
         </AnimatedSection>
 
-        <AnimatedSection delay={0.2}>
-          <div className="mt-4">
-            <RubricTag label="Metric Created" />
-          </div>
-        </AnimatedSection>
       </div>
     </section>
   );

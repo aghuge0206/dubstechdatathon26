@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { RubricTag } from "@/components/ui/RubricTag";
 import { RankingsTable } from "@/components/ui/RankingsTable";
 import { RiskScoreChart } from "@/components/charts/RiskScoreChart";
 import { IndicatorBreakdownChart } from "@/components/charts/IndicatorBreakdownChart";
@@ -53,9 +52,6 @@ export function RankingsSection({ data }) {
     <section id={SECTION_IDS.rankings} className="bg-white border-b border-slate-200">
       <div className="section-container">
         <AnimatedSection>
-          <div className="flex flex-wrap items-center gap-3 mb-2">
-            <RubricTag label="Entities Ranked" />
-          </div>
           <SectionHeading
             title="Who Has the Worst Access?"
             description={`All ${data.length} demographic subgroups ranked by Care Gap Risk Score. Higher = worse access.`}

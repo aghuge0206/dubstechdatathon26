@@ -2,7 +2,6 @@
 
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { RubricTag } from "@/components/ui/RubricTag";
 import { SECTION_IDS } from "@/data/constants";
 
 const STEPS = [
@@ -28,10 +27,6 @@ export function HowScoreWorksSection() {
     <section id={SECTION_IDS.methodology} className="bg-background-secondary border-b border-slate-200">
       <div className="section-container">
         <AnimatedSection>
-          <div className="flex flex-wrap items-center gap-3 mb-2">
-            <RubricTag label="Process Explained" />
-            <RubricTag label="Metric Described" />
-          </div>
           <SectionHeading
             title="How the Score Works"
             description="Three steps to create a single, actionable ranking."

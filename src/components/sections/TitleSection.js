@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { DataStatus } from "@/components/ui/DataStatus";
-import { RubricTag } from "@/components/ui/RubricTag";
 import { SECTION_IDS, TEAM } from "@/data/constants";
 
 export function TitleSection({ isPlaceholder }) {
@@ -38,8 +37,6 @@ export function TitleSection({ isPlaceholder }) {
 
           <div className="flex flex-wrap items-center gap-3">
             <DataStatus isPlaceholder={isPlaceholder} />
-            <RubricTag label="Metric Created" />
-            <RubricTag label="Entities Ranked" />
           </div>
         </motion.div>
       </div>
