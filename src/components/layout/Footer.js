@@ -50,7 +50,7 @@ export function Footer() {
                   download
                   className="text-slate-400 hover:text-white transition-colors"
                 >
-                  Download Ranked Data (JSON) →
+                  Download Ranked Data (JSON)
                 </a>
               </li>
               <li>
@@ -59,7 +59,7 @@ export function Footer() {
                   download
                   className="text-slate-400 hover:text-white transition-colors"
                 >
-                  Download Ranked Data (CSV) →
+                  Download Ranked Data (CSV)
                 </a>
               </li>
             </ul>
