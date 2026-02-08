@@ -70,7 +70,7 @@ export function RankingsSection({ data }) {
         {/* Indicator Breakdown */}
         <AnimatedSection delay={0.15}>
           <div className="mt-8 mb-12">
-            <h3 className="font-serif text-lg text-foreground mb-4">What Drives Each Group's Score?</h3>
+            <h3 className="font-serif text-lg text-foreground mb-4">What Drives Each Group&apos;s Score?</h3>
             <IndicatorBreakdownChart data={topForChart} />
           </div>
         </AnimatedSection>

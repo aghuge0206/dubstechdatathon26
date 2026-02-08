@@ -308,4 +308,5 @@ const footer = {
     "National Center for Health Statistics. National Health Interview Survey, 2019-2024. Public-use data file and documentation.",
 };
 
-export default { hero, problem, process, exploration, metric, rankings, insights, footer };
+const data = { hero, problem, process, exploration, metric, rankings, insights, footer };
+export default data;
